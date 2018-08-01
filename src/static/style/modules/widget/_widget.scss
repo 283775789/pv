@@ -1,0 +1,4 @@
+// 截断盒子
+.pv-cutoff {
+  @include cutoff();
+}

@@ -1,0 +1,61 @@
+/* 头部 */
+$header-height: 2.2rem !default; // 高度
+$header-bg: $color-main !default; // 背景色
+$header-color: #fff !default; // 文字颜色
+$header-px: $spacing-small !default; // 内间距
+$header-left-font-size: $font-size-large !default; // 左侧字号
+$header-body-font-size: $font-size-huge !default; // 标题字号
+
+// 头部：容器
+.pv-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: $header-height;
+  color: $header-color;
+  background: $header-bg;
+}
+
+// 头部：左侧
+.pv-header-left {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  overflow: hidden;
+  font-size: $header-left-font-size;
+}
+
+.pv-header-backbtn {
+  min-width: 2.2rem;
+  height: $header-height;
+  line-height: $header-height;
+  padding-left: $header-px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pv-header-backbtn::before {
+  content: "";
+  margin-right: -2px;
+  @include arrow(left, $header-color, .75rem, 2px);
+}
+
+// 头部：主体
+.pv-header-body {
+  flex-grow: 1;
+  max-width: 60%;
+  padding: 0 $header-px;
+  font-size: $header-body-font-size;
+  text-align: center;
+}
+
+// 头部：右侧
+.pv-header-right {
+  width: 20%;
+  padding-right: $header-px;
+  overflow: hidden;
+  text-align: right;
+}
