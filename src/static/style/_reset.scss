@@ -23,6 +23,7 @@ html {
 body {
   min-height: 100%;
   line-height: $line-height-default;
+  overflow: hidden;
   font-family: $font-family-default;
   font-size: $font-size-default;
   color: $color-text-main;

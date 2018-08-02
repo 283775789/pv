@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "fastclick": "^1.0.6",
+    "swiper": "^4.3.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -84,8 +85,13 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
+    "Chrome >= 8",
+    "Firefox >= 4",
+    "Edge >= 12",
+    "Explorer >= 9",
+    "iOS >= 6",
+    "Safari >= 6",
+    "Android >= 2.2",
+    "Opera >= 30"
   ]
 }

@@ -54,3 +54,8 @@ $spacing-small: $spacing-step * 3 !default; // 小间距
 $spacing-medium: $spacing-step * 4 !default; // 中间距
 $spacing-large: $spacing-step * 6 !default; // 大间距
 $spacing-huge: $spacing-step * 8 !default; // 超大间距
+
+/* ------------------------------ 其它 ------------------------------ */
+
+/* 过渡时间 */
+$time: .2s !default;

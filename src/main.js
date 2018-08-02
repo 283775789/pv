@@ -6,8 +6,8 @@ import App from '@/App'
 import router from '@/config/router'
 
 // 解决ios click bug
-var attachFastClick = require('fastclick')
-attachFastClick.attach(document.body)
+// var attachFastClick = require('fastclick')
+// attachFastClick.attach(document.body)
 
 // 创建Vue应用根实例
 new Vue({

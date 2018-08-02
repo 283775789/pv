@@ -1,0 +1,43 @@
+/* 页脚 */
+$footer-height: 2.45rem !default; // 高度
+$footer-bg: #fff !default; // 背景色
+$footer-color: #beafaf !default; // 文字颜色
+$footer-active-color: #c63435 !default; // 激活颜色
+$footer-px: $spacing-small !default; // 内间距
+$footer-size: $font-size-small !default; // 字号
+
+// 页脚：容器
+.pv-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: $footer-height;
+  background: $footer-bg;
+  @include lines(top);
+}
+
+.pv-footer > a {
+  display: block;
+  flex-grow: 1;
+  padding: 0 $footer-px;
+  font-size: $footer-size;
+  color: $footer-color;
+  text-align: center;
+
+  &.xactive {
+    color: $footer-active-color;
+  }
+}
+
+.pv-footer > a > .pv-ico {
+  display: block;
+  margin: 0 auto;
+}
+
+// 主体: 页面有页脚时
+.pv-footer ~ .pv-body {
+  bottom: $footer-height;
+}

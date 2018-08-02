@@ -1,0 +1,23 @@
+/* 主体 */
+$body-bg: $color-bg-body !default; // 背景色
+$body-px: $spacing-small !default; // 内边距
+
+// 主体：容器
+.pv-body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: $body-bg;
+}
+
+.pv-body-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 $body-px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

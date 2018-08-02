@@ -2,10 +2,11 @@
 import Vue from 'vue'
 import Header from '@comps/header/header'
 import Back from '@comps/back/back'
-
+import Slider from '@comps/slider/slider'
 const components = [
   Header,
-  Back
+  Back,
+  Slider
 ]
 
 components.forEach(function (component) {

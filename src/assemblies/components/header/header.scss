@@ -59,3 +59,8 @@ $header-body-font-size: $font-size-huge !default; // 标题字号
   overflow: hidden;
   text-align: right;
 }
+
+// 主体: 页面有头部时
+.pv-header ~ .pv-body {
+  top: $header-height;
+}

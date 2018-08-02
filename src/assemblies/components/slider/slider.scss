@@ -1,0 +1,43 @@
+/* 滑动内容 */
+.pv-slider-enter-active,
+.pv-sliderprev-enter-active,
+.pv-slider-leave-active,
+.pv-sliderprev-leave-active {
+  transition: all $time linear;
+}
+
+// 切换到后一个: 进入
+.pv-slider-enter-active {
+  transform: translateX(100%);
+}
+
+.pv-slider-enter-to {
+  transform: translateX(0);
+}
+
+// 切换到后一个: 离开
+.pv-slider-leave-active {
+  transform: translateX(0);
+}
+
+.pv-slider-leave-to {
+  transform: translateX(-100%);
+}
+
+// 切换到前一个: 进入
+.pv-sliderprev-enter-active {
+  transform: translateX(-100%);
+}
+
+.pv-sliderprev-enter-to {
+  transform: translateX(0);
+}
+
+// 切换到前一个: 离开
+.pv-sliderprev-leave-active {
+  transform: translateX(0);
+}
+
+.pv-sliderprev-leave-to {
+  transform: translateX(100%);
+}
