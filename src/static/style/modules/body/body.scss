@@ -21,3 +21,23 @@ $body-px: $spacing-small !default; // 内边距
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+// 主体: 页面有头部时
+.pv-header ~ .pv-body {
+  top: $header-height;
+}
+
+// 主体: 页面有页脚时
+.pv-footer ~ .pv-body {
+  bottom: $footer-height;
+}
+
+// 主体: 页面有tab导航时
+.pv-navbox ~ .pv-body {
+  top: $nav-height;
+}
+
+// 主体: 页面头部同时有tab导航时
+.pv-header ~ .pv-navbox ~ .pv-body {
+  top: $header-height + $nav-height;
+}

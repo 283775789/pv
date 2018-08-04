@@ -1,0 +1,39 @@
+/* 导航 */
+$nav-height: 2.2rem !default; // 高度
+$nav-bg: #fff !default; // 背景色
+$nav-border-color: $color-border-main !default; // 边框色
+$nav-link-mx: $spacing-tiny !default; // 导航项间距
+$nav-link-font-size: $font-size-medium !default; // 导航链接字号
+$nav-link-color: $color-text-main !default; // 导航链接文字颜色
+$nav-link-active-color: $color-main !default; // 导航链接选中文本颜色
+$nav-active-line-color: $color-main !default; // 选中项标识线颜色
+
+// 导航：容器
+.pv-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $nav-bg;
+  border-bottom: 1px solid $nav-border-color;
+}
+
+// 导航：链接
+.pv-nav-link {
+  display: block;
+  height: $nav-height;
+  line-height: $nav-height;
+  margin: 0 $nav-link-mx;
+  font-size: $nav-link-font-size;
+  color: $nav-link-color;
+  vertical-align: top;
+
+  &.xactive {
+    color: $nav-link-active-color;
+  }
+}
+
+// 导航: 页面有头部时
+.pv-header ~ .pv-nav {
+  top: $header-height;
+}

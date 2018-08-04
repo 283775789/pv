@@ -36,8 +36,3 @@ $footer-size: $font-size-small !default; // 字号
   display: block;
   margin: 0 auto;
 }
-
-// 主体: 页面有页脚时
-.pv-footer ~ .pv-body {
-  bottom: $footer-height;
-}

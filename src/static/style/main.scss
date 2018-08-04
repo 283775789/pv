@@ -29,9 +29,11 @@
 
 // 样式模块:布局
 // ------------------------------------------------------------
-@import "body/body.scss";
 @import "header/header.scss";
+@import "xscroll-list/xscroll-list.scss";
+@import "nav/nav.scss";
 @import "footer/footer.scss";
+@import "body/body.scss";
 
 // 功能样式
 // ------------------------------------------------------------
