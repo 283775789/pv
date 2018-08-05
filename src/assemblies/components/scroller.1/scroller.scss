@@ -1,0 +1,39 @@
+/* 滚动容器 */
+
+.pv-scroller {
+  -webkit-overflow-scrolling: touch;
+}
+
+// 滚动容器:垂直
+.pv-scroller.xvertical {
+  overflow-y: auto;
+}
+
+// 滚动容器:水平
+.pv-scroller.xhorizontal {
+  overflow-x: auto;
+}
+
+// 滚动容器: 主滚动区
+.pv-scroller.xmain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+// 滚动容器: 滚动内容区
+.pv-scroller-inner {
+  min-height: 101%;
+}
+
+// 滚动容器: swiper滚动区
+.pv-scroller.xswiper {
+  height: 100%;
+}
+
+// 滚动容器: 前面有导航区
+.pv-scroller.xnav {
+  top: $nav-height;
+}

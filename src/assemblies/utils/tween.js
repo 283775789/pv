@@ -1,8 +1,8 @@
 const TWEEN = require('@tweenjs/tween.js')
 
-export default function (num1, num2, time, callback) {
-  new TWEEN.Tween({value: num1})
-    .to({value: num2}, time)
+export default function (from, to, time, callback) {
+  new TWEEN.Tween(from)
+    .to(to, time)
     .start()
     .onUpdate(callback)
 

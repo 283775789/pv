@@ -4,7 +4,9 @@
       <slot name="left"></slot>
     </div>
     <div class="pv-header-body">
-      <slot name="body"></slot>
+      <h1 slot="body" class="pv-cutoff">
+        <slot></slot>
+      </h1>
     </div>
     <div class="pv-header-right">
       <slot name="right"></slot>
@@ -13,6 +15,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'pv-header'
 }

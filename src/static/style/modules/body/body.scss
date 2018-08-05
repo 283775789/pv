@@ -1,43 +1,42 @@
 /* 主体 */
 $body-bg: $color-bg-body !default; // 背景色
-$body-px: $spacing-small !default; // 内边距
 
-// 主体：容器
-.pv-body {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  background: $body-bg;
-}
-
+// 主体及主体内部内容区:容器
+.pv-body,
 .pv-body-inner {
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  padding: 0 $body-px;
+  overflow: hidden;
+  background: $body-bg;
+}
+
+// 主体及主体内部内容区:可滚动
+.pv-body.xscroll,
+.pv-body-inner.xscroll {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-// 主体: 页面有头部时
-.pv-header ~ .pv-body {
+// 主体:页面有头部时
+.pv-body.xheader {
   top: $header-height;
 }
 
-// 主体: 页面有页脚时
-.pv-footer ~ .pv-body {
+// 主体:页面有页脚时
+.pv-body.xfooter {
   bottom: $footer-height;
 }
 
-// 主体: 页面有tab导航时
-.pv-navbox ~ .pv-body {
+// 主体及主体内部内容区:页面有tab导航时
+.pv-body.xnav,
+.pv-body-inner.xnav {
   top: $nav-height;
 }
 
-// 主体: 页面头部同时有tab导航时
-.pv-header ~ .pv-navbox ~ .pv-body {
+// 主体:页面头部同时有tab导航时
+.pv-body.xhn {
   top: $header-height + $nav-height;
 }

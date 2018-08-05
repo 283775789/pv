@@ -1,43 +1,45 @@
 /* 滑动内容 */
-.pv-slider-enter-active,
-.pv-sliderprev-enter-active,
-.pv-slider-leave-active,
-.pv-sliderprev-leave-active {
-  transition: all $time linear;
+.pv-slider {
+  transition: all 200ms linear;
+}
+
+// 禁用动画
+.pv-slider.xdisabled {
+  transition: none;
 }
 
 // 切换到后一个: 进入
-.pv-slider-enter-active {
+.pv-slider.xnext.xenter-from {
   transform: translateX(100%);
 }
 
-.pv-slider-enter-to {
+.pv-slider.xnext.xenter-to {
   transform: translateX(0);
 }
 
 // 切换到后一个: 离开
-.pv-slider-leave-active {
+.pv-slider.xnext.xleave-from {
   transform: translateX(0);
 }
 
-.pv-slider-leave-to {
+.pv-slider.xnext.xleave-to {
   transform: translateX(-100%);
 }
 
 // 切换到前一个: 进入
-.pv-sliderprev-enter-active {
+.pv-slider.xprev.xenter-from {
   transform: translateX(-100%);
 }
 
-.pv-sliderprev-enter-to {
+.pv-slider.xprev.xenter-to {
   transform: translateX(0);
 }
 
 // 切换到前一个: 离开
-.pv-sliderprev-leave-active {
+.pv-slider.xprev.xleave-from {
   transform: translateX(0);
 }
 
-.pv-sliderprev-leave-to {
+.pv-slider.xprev.xleave-to {
   transform: translateX(100%);
 }

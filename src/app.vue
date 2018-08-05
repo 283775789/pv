@@ -1,45 +1,35 @@
 <template>
   <div id="app">
-    <!-- 头部 -->
+    <!-- header -->
     <pv-header>
       <pv-back
         slot="left"
         class="pv-header-backbtn">
-        <span>文字</span>
       </pv-back>
-      <h1 slot="body" class="pv-cutoff">标题</h1>
-      <div slot="right" class="pv-cutoff">操作</div>
+      {{ $route.meta.title }}
     </pv-header>
-    <!-- /头部 -->
+    <!-- /header -->
 
-    <!-- 导航项 -->
-    <pv-xscroll-list
-      class="pv-nav"
-      :number="10">
-      <a class="pv-nav-link" slot-scope="scope">导航项{{scope.index}}</a>
-    </pv-xscroll-list>
-    <!-- /导航项 -->
+    <!-- content -->
+    <pv-router-view />
+    <!-- /content -->
 
-    <!-- 页脚 -->
+    <!-- footer -->
     <div class="pv-footer">
-      <a @click="activeIndex=1">
+      <router-link to="/">
         <i class="pv-ico xshare"></i>
         <span>菜单1</span>
-      </a>
-      <a @click="activeIndex=2">
-        <i class="pv-ico xlearner"></i>
+      </router-link>
+      <router-link to="/p2">
+        <i class="pv-ico xfollower"></i>
         <span>菜单2</span>
-      </a>
+      </router-link>
       <a @click="activeIndex=3">
         <i class="pv-ico xme"></i>
         <span>菜单3</span>
       </a>
     </div>
-    <!-- /页脚 -->
-
-    <!-- 主体 -->
-
-    <!-- /主体 -->
+    <!-- /footer -->
   </div>
 </template>
 

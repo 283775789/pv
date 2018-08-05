@@ -34,6 +34,8 @@
 @import "nav/nav.scss";
 @import "footer/footer.scss";
 @import "body/body.scss";
+@import "scroller/scroller.scss";
+@import "swiper/swiper.scss";
 
 // 功能样式
 // ------------------------------------------------------------
@@ -52,14 +54,4 @@
 .pv-ico:before {
   content: "ico";
   color: #fff;
-}
-
-.pv-body-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  border-right: 2px solid #ccc;
 }
