@@ -4,7 +4,7 @@
       <li ref="item"
           v-for="index in number"
           class="pv-xsl-item"
-          :class="{xactive: activeIndex === index -1}"
+          :class="{xactive: currentIndex === index -1}"
           :key="index"
           @click="clickItem(index)">
           <slot :index="index"></slot>
@@ -25,7 +25,7 @@ export default {
       type: Number,
       required: true
     },
-    currentIndex: {
+    activeIndex: {
       type: Number,
       default: 0
     }
@@ -33,7 +33,7 @@ export default {
 
   data () {
     return {
-      activeIndex: this.currentIndex
+      currentIndex: this.activeIndex
     }
   },
 
@@ -67,7 +67,7 @@ export default {
       const listWidth = this.$el.offsetWidth
       const centerDiff = clickItemWidth / 2 + clickItemLeft - listWidth / 2
 
-      // don't to do anything and return directly when the distance is less than 10 px,
+      // return directly when the distance is less than 10 px,
       if (Math.abs(centerDiff - curentScrollLeft) < 10) return
 
       // move the scroll bar with animation.
@@ -84,9 +84,9 @@ export default {
 
     clickItem (index) {
       const itemIndex = index - 1
-      if (itemIndex === this.activeIndex) return
+      if (itemIndex === this.currentIndex) return
 
-      this.activeIndex = itemIndex
+      this.currentIndex = itemIndex
       this.updateStates(itemIndex)
       this.$emit('change', itemIndex)
     }
@@ -94,12 +94,12 @@ export default {
 
   mounted () {
     this.hideScrollBar()
-    this.updateStates(this.currentIndex)
+    this.updateStates(this.activeIndex)
   },
 
   watch: {
-    currentIndex (val) {
-      this.activeIndex = val
+    activeIndex (val) {
+      this.currentIndex = val
       this.updateStates(val)
     }
   }

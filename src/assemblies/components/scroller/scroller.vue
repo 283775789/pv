@@ -99,7 +99,7 @@ export default {
     },
 
     endPulldown (event) {
-      if (this.offset.distanceY >= this.refreshDistance && !this.isLoading) {
+      if (this.offset.distanceY >= this.refreshDistance && !this.isLoadingLatest) {
         this.isLoadingLatest = true
         this.$emit('refresh')
       }
@@ -132,7 +132,7 @@ export default {
         setTimeout(this.initPulldown, 600)
       }
 
-      if (distance <= this.loadBottom && !this.isLoading) {
+      if (distance <= this.loadBottom && !this.isLoadingMore) {
         this.isLoadingMore = true
         this.$emit('load')
       }

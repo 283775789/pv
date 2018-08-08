@@ -4,7 +4,8 @@
     <pv-xscroll-list
       class="pv-nav"
       :number="10"
-      :currentIndex="5">
+      :activeIndex="currentCategoryIndex"
+      @change="changeCategoryNav">
       <a class="pv-nav-link" slot-scope="scope">导航项{{scope.index}}</a>
     </pv-xscroll-list>
     <!-- /navigation -->
@@ -14,33 +15,19 @@
       <div class="pv-swiper swiper-container">
           <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <pv-scroller class="xswiper" :isLoading="isLoading" @refresh="demo">
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
-                  <p>从手机的前面板图片来看，三款新iPhone都采用“刘海屏”设计，与在售的 iPhone X 一致。换言之，2018年苹果iPhone极有可能全面拥抱全面屏。</p>
+                <pv-scroller class="xswiper" :isLoading="isLoading">
+                  slide1
                 </pv-scroller>
               </div>
               <div class="swiper-slide">Slide 2</div>
               <div class="swiper-slide">Slide 3</div>
+              <div class="swiper-slide">Slide 4</div>
+              <div class="swiper-slide">Slide 5</div>
+              <div class="swiper-slide">Slide 6</div>
+              <div class="swiper-slide">Slide 7</div>
+              <div class="swiper-slide">Slide 8</div>
+              <div class="swiper-slide">Slide 9</div>
+              <div class="swiper-slide">Slide 10</div>
           </div>
       </div>
     </div>
@@ -57,21 +44,27 @@ export default {
 
   data () {
     return {
-      isLoading: false
+      swiper: null,
+      isLoading: false,
+      currentCategoryIndex: 0
     }
   },
 
   methods: {
-    demo () {
-      this.isLoading = true
-      setTimeout(() => {
-        this.isLoading = false
-      }, 3000)
+    changeCategoryNav (navIndex) {
+      this.swiper.slideTo(navIndex)
+    },
+    changeCategoryPage () {
+      this.currentCategoryIndex = this.swiper.activeIndex
     }
   },
 
   mounted () {
-    new Swiper('.swiper-container')
+    this.swiper = new Swiper('.swiper-container', {
+      on: {
+        slideChange: this.changeCategoryPage
+      }
+    })
   }
 }
 </script>
