@@ -1,10 +1,27 @@
 <template>
   <div class="pv-scroller"
        @scroll="scrollHandler">
-       <div class="pv-scroller-pulldown">--往下拉刷新内容--</div>
+       <div ref="top-loading"
+            v-if="refreshDistance > 0"
+            class="pv-scroller-loading xlatest"
+            :class="{xloading: this.isLoadingLatest }">
+            <i class="pv-font xloading"
+              :class="{'XRotating': this.isLoadingLatest}">
+            </i>
+            <slot name="loading-latest-text">
+              <span>{{this.isLoadingLatest ? '更新中...' : "下拉更新"}}</span>
+            </slot>
+       </div>
        <div ref="inner"
             class="pv-scroller-inner">
             <slot></slot>
+       </div>
+       <div v-if="isLoadingMore"
+            class="pv-scroller-loading xmore">
+            <i class="pv-font xloading XRotating"></i>
+            <slot name="loading-more-text">
+              <span>努力加载中...</span>
+            </slot>
        </div>
   </div>
 </template>
@@ -20,9 +37,13 @@ export default {
       type: Number,
       default: 100
     },
-    updateDistance: {
+    refreshDistance: {
       type: Number,
       default: 30
+    },
+    isLoading: {
+      type: Boolean,
+      required: true
     }
   },
 
@@ -34,7 +55,8 @@ export default {
         distanceX: 0,
         distanceY: 0
       },
-      isLoading: false,
+      isLoadingLatest: false,
+      isLoadingMore: false,
       hasPulldownEvent: false
     }
   },
@@ -52,8 +74,11 @@ export default {
 
     setPulldownStyle (value) {
       const scrollerInner = this.$refs.inner
+      const topLoadingIcon = this.$refs['top-loading']
       scrollerInner.style.webkitTransform = `translateY(${value}px)`
       scrollerInner.style.transform = `translateY(${value}px)`
+      topLoadingIcon.style.webkitTransform = `scale(${1 + value / (this.refreshDistance * 6)})`
+      topLoadingIcon.style.transform = `scale(${1 + value / (this.refreshDistance * 6)})`
     },
 
     startPulldown (event) {
@@ -65,21 +90,20 @@ export default {
       const y = (event.touches[0].pageY - this.offset.startY)
 
       // easing the distance
-      this.offset.distanceY = y / 3
+      this.offset.distanceY = y / 4.5
 
       // call preventDefault to prevent ios bounce
-
       if (this.offset.distanceY > 0) event.preventDefault()
-
-      if (this.offset.distanceY >= this.updateDistance && !this.isLoading) {
-        this.isLoading = true
-        this.$emit('update')
-      }
 
       this.setPulldownStyle(this.offset.distanceY)
     },
 
     endPulldown (event) {
+      if (this.offset.distanceY >= this.refreshDistance && !this.isLoading) {
+        this.isLoadingLatest = true
+        this.$emit('refresh')
+      }
+
       const vm = this
       tween({value: this.offset.distanceY}, {value: 0}, 150, function (update) {
         vm.setPulldownStyle(update.value)
@@ -109,14 +133,24 @@ export default {
       }
 
       if (distance <= this.loadBottom && !this.isLoading) {
-        this.isLoading = true
+        this.isLoadingMore = true
         this.$emit('load')
       }
     }
   },
 
   mounted () {
-    this.initPulldown()
+    // disable pulldown to refresh if the refreshDistance is 0.
+    if (this.refreshDistance > 0) this.initPulldown()
+  },
+
+  watch: {
+    isLoading (newVal) {
+      if (!newVal) {
+        this.isLoadingLatest = false
+        this.isLoadingMore = false
+      }
+    }
   }
 }
 </script>

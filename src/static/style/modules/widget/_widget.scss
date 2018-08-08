@@ -1,4 +1,21 @@
 // 截断盒子
-.pv-cutoff {
+.XEllipsis {
   @include cutoff();
 }
+
+// 旋转
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.XRotating {
+  transform-origin: center center;
+  animation: rotating 2s linear infinite;
+}
+

@@ -1,17 +1,51 @@
 /* 滚动容器 */
+$loading-box-height: 1.5rem !default; // 加载提示区高度
+$loading-icon-size: .8rem !default; // 加载图标尺寸
 
 .pv-scroller {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-// 下拉刷新容器
-.pv-scroller-pulldown {
-  height: 30px;
-  margin-bottom: -30px;
-  font-size: 16px;
+// 滚动容器: 滚动内容区
+.pv-scroller-inner {
+  min-height: 101%;
+  padding-bottom: $loading-box-height;
+  background: #fff;
+}
+
+// 加载区
+.pv-scroller-loading {
+  height: $loading-box-height;
+  line-height: $loading-box-height;
   color: #999;
   text-align: center;
+  transition: margin $time linear;
+}
+
+// 加载区: 顶部加载最新内容
+.pv-scroller-loading.xlatest {
+  position: relative;
+  z-index: -1;
+  margin-bottom: -$loading-box-height;
+  transform-origin: center 20%;
+}
+
+// 加载区: 加载最新内容时显示在最顶部
+.pv-scroller-loading.xlatest.xloading {
+  margin-bottom: 0;
+  transition: none;
+}
+
+// 加载区: 顶部加载更多内容
+.pv-scroller-loading.xmore {
+  position: relative;
+  margin-top: -$loading-box-height;
+}
+
+.pv-scroller-loading > .xloading {
+  display: inline-block;
+  font-size: $loading-icon-size;
 }
 
 // 滚动容器: 主滚动区
@@ -21,12 +55,6 @@
   bottom: 0;
   left: 0;
   width: 100%;
-}
-
-// 滚动容器: 滚动内容区
-.pv-scroller-inner {
-  min-height: 101%;
-  background: #fff;
 }
 
 // 滚动容器: swiper滚动区
