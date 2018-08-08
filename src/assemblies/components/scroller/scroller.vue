@@ -33,7 +33,7 @@ export default {
   name: 'pv-scroller',
 
   props: {
-    loadBottom: {
+    loadDistance: {
       type: Number,
       default: 100
     },
@@ -132,7 +132,7 @@ export default {
         setTimeout(this.initPulldown, 600)
       }
 
-      if (distance <= this.loadBottom && !this.isLoadingMore) {
+      if (distance <= this.loadDistance && !this.isLoadingMore) {
         this.isLoadingMore = true
         this.$emit('load')
       }
