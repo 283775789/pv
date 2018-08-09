@@ -18,15 +18,15 @@
     <div class="pv-footer">
       <router-link to="/">
         <i class="pv-ico xshare"></i>
-        <span>菜单1</span>
+        <span>分享赚钱</span>
       </router-link>
       <router-link to="/p2">
-        <i class="pv-ico xfollower"></i>
-        <span>菜单2</span>
+        <i class="pv-ico xstudent"></i>
+        <span>收徒赚钱</span>
       </router-link>
       <a @click="activeIndex=3">
         <i class="pv-ico xme"></i>
-        <span>菜单3</span>
+        <span>个人中心</span>
       </a>
     </div>
     <!-- /footer -->

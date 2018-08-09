@@ -21,10 +21,7 @@ $color-bg-body:#f5f5f5 !default; // 页面背景
 $color-text-main:#333 !default; // 主文本
 $color-text-secondary:#666 !default; // 辅助文本
 $color-text-weaking:#999 !default; // 弱化文本
-$color-text-disabled:#ccc !default; // 禁用文本
-$color-text-tag:#f32f30 !default; // 标签文本
-$color-text-price: #fd9b01 !default; // 价格文本
-$color-text-placeholder: $color-text-weaking !default; // 占位文本
+$color-text-placeholder: #ccc !default; // 占位文本
 
 /* 边框色{Color+} */
 $color-border-main:#eee !default; // 主边框

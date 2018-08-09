@@ -1,5 +1,5 @@
 <template>
-  <div class="pv-body xheader xfooter" id="sharing-home">
+  <div class="pv-body xheader xfooter" id="sharing-articles">
     <!-- navigation -->
     <pv-xscroll-list
       class="pv-nav"

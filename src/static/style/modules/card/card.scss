@@ -1,0 +1,14 @@
+/* 卡片 */
+$card-bg: #fff !default; // 背景
+$card-px: $spacing-small !default; // 左右内边距
+$card-spaceing: $spacing-tiny !default; // 卡片间距
+
+// 卡片: 容器
+.pv-card {
+  padding: 0 $card-px;
+  background: #fff;
+}
+
+.pv-card + .pv-card {
+  margin-top: $card-spaceing;
+}

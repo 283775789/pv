@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@pages/sharing/home'
-import Home2 from '@pages/sharing/home/home2'
+import Home from '@pages/sharing/articles'
 
 Vue.use(Router)
 
@@ -15,14 +14,6 @@ export default new Router({
       meta: {
         title: '来米资讯',
         level: 1
-      }
-    },
-    {
-      path: '/p2',
-      component: Home2,
-      meta: {
-        title: '二级页面',
-        level: 2
       }
     }
   ]

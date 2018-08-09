@@ -1,0 +1,62 @@
+// 文章简介
+.pv-introl {
+  padding: $spacing-small 0;
+  border-bottom: .5px solid $color-border-main;
+}
+
+// 文章简介: 图片容器
+.pv-intro-imgbox img {
+  width: 100%;
+}
+
+// 文章简介: 标题
+.pv-introl-title {
+  height: 2.6rem;
+  line-height: 1.3rem;
+  overflow: hidden;
+  font-size: $font-size-large;
+}
+
+// 文章简介: 属性
+.pv-introl-props {
+  font-size: $font-size-small;
+}
+
+// 文章简介: 标签(高价文)
+.pv-introl-title > .pv-tag {
+  margin-right: 5px;
+}
+
+// 文章简介: 价格
+.pv-introl-price {
+  margin-right: $spacing-large;
+  color: $color-main;
+}
+
+// 文章简介: 浏览量
+.pv-introl-pv {
+  color: $color-text-weaking;
+}
+
+// 文章简介: 容器-单图片
+.pv-introl.xsingle {
+  display: flex;
+}
+
+.pv-introl.xsingle > .pv-intro-body {
+  flex: 1;
+  margin-right: .75rem;
+}
+
+.pv-introl.xsingle > .pv-introl-imgbox {
+  width: 5.6rem;
+}
+
+.pv-introl.xsingle > .pv-introl-imgbox img {
+  height: 3.7rem;
+}
+
+// 文章简介: 容器-多图片
+.pv-introl.xmultiple > .pv-introl-imgbox {
+  display: flex;
+}

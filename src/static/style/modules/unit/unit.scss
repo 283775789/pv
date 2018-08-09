@@ -1,0 +1,17 @@
+/* 元件 */
+$tag-height: .9rem !default; // 高度
+$tag-px: .15rem !default; // 内间距
+$tag-bg: $color-main !default; // 背景颜色
+$tag-color: #fff !default; // 文本颜色
+$tag-font-size: $font-size-small !default; // 字体大小
+
+// 标签
+.pv-tag {
+  display: inline-block;
+  line-height: $tag-height;
+  padding: 0 $tag-px;
+  font-size: $tag-font-size;
+  color: $tag-color;
+  vertical-align: middle;
+  background: $tag-bg;
+}
