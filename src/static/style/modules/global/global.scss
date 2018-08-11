@@ -1,7 +1,7 @@
 /* 全局样式 */
 // stylelint-disable declaration-no-important
 
-// 文本
+// ---------- 文本 ----------
 .XTextMain {
   color: $color-text-main !important;
 }
@@ -14,3 +14,23 @@
   color: $color-text-weaking !important;
 }
 
+// ---------- 超出省略文本 ----------
+.XEllipsis {
+  @include cutoff();
+}
+
+// ---------- 旋转 ----------
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.XRotating {
+  transform-origin: center center;
+  animation: rotating 2s linear infinite;
+}

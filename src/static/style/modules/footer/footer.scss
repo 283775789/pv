@@ -4,7 +4,7 @@ $footer-bg: #fff !default; // 背景色
 $footer-color: #beafaf !default; // 文字颜色
 $footer-active-color: #c63435 !default; // 激活颜色
 $footer-px: $spacing-small !default; // 内间距
-$footer-size: $font-size-small !default; // 字号
+$footer-font-size: $font-size-small !default; // 字号
 
 // 页脚：容器
 .pv-footer {
@@ -13,8 +13,10 @@ $footer-size: $font-size-small !default; // 字号
   left: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: $footer-height;
+  font-size: $footer-font-size;
   background: $footer-bg;
   @include lines(top);
 }
@@ -23,7 +25,6 @@ $footer-size: $font-size-small !default; // 字号
   display: block;
   flex-grow: 1;
   padding: 0 $footer-px;
-  font-size: $footer-size;
   color: $footer-color;
   text-align: center;
 

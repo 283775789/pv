@@ -1,0 +1,27 @@
+/* 弹出层 */
+$popup-bg: #fff !default; // 背景
+$popup-title-height: 2.2rem !default; // 分享到
+$popup-title-font-size: $font-size-large !default; // 标题字体
+$popup-body-spacing: $spacing-medium !default; // 主体内边距
+
+// 弹出层: 容器
+.pv-popup {
+  width: 100%;
+  background: #fff;
+}
+
+// 弹出层: 标题
+.pv-popup-title {
+  height: $popup-title-height;
+  line-height: $popup-title-height;
+  font-size: $popup-title-font-size;
+  text-align: center;
+  border-bottom: .5px solid $color-border-main;
+}
+
+// 弹出层: 主体
+.pv-popup-body {
+  padding: $popup-body-spacing;
+  text-align: center;
+}
+

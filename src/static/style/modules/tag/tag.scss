@@ -1,6 +1,6 @@
 /* 元件 */
 $tag-height: .9rem !default; // 高度
-$tag-px: .15rem !default; // 内间距
+$tag-px: .2rem !default; // 内间距
 $tag-bg: $color-main !default; // 背景颜色
 $tag-color: #fff !default; // 文本颜色
 $tag-font-size: $font-size-small !default; // 字体大小
@@ -14,4 +14,5 @@ $tag-font-size: $font-size-small !default; // 字体大小
   color: $tag-color;
   vertical-align: middle;
   background: $tag-bg;
+  border-radius: 3px;
 }

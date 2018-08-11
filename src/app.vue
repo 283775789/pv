@@ -15,7 +15,8 @@
     <!-- /content -->
 
     <!-- footer -->
-    <div class="pv-footer">
+    <div v-if="$route.meta.level === 1"
+      class="pv-footer">
       <router-link to="/">
         <i class="pv-ico xshare"></i>
         <span>分享赚钱</span>

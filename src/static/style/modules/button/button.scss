@@ -1,0 +1,34 @@
+/* 按钮 */
+$btn-height: 2rem !default; // 高度
+$btn-font-size: $font-size-medium !default; // 字体大小
+$main-btn-bg: $color-main !default; // 主按钮背景
+$main-btn-color: #fff !default; // 主按钮文本色
+$main-btn-border-color: $main-btn-bg !default;
+
+// 按钮: 容器
+.pv-btn {
+  height: $btn-height;
+  line-height: $btn-height - .1rem;
+  font-size: $btn-font-size;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: $btn-height / 2;
+}
+
+// 按钮: 主要
+.pv-btn.xmain {
+  color: $main-btn-color;
+  background: $main-btn-bg;
+  border-color: $main-btn-border-color;
+}
+
+// 按钮: 全尺寸
+.pv-btn.xfull {
+  flex-grow: 0;
+  width: 80%;
+}
+
+// 底部按钮容器
+.pv-btnfooter {
+  @extend .pv-footer;
+}

@@ -26,7 +26,8 @@ $body-bg: $color-bg-body !default; // 背景色
 }
 
 // 主体:页面有页脚时
-.pv-body.xfooter {
+.pv-body.xfooter,
+.pv-body-inner.xfooter {
   bottom: $footer-height;
 }
 

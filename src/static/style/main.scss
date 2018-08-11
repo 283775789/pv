@@ -22,7 +22,9 @@
 
 // 样式模块
 // ------------------------------------------------------------
-@import "widget/widget.scss";
+@import "common.scss";
+@import "tag/tag.scss";
+@import "button/button.scss";
 
 // vue组件
 // ------------------------------------------------------------
@@ -37,10 +39,13 @@
 @import "body/body.scss";
 @import "scroller/scroller.scss";
 @import "swiper/swiper.scss";
+@import "card/card.scss";
+@import "popup/popup.scss";
 
 // 功能样式
 // ------------------------------------------------------------
 @import "animate/animate.scss";
+@import "global/global.scss";
 
 // 页面
 // ------------------------------------------------------------

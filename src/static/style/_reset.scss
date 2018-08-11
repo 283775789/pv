@@ -48,6 +48,16 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
+// 重置字体默认样式
+i, em {
+  font-style: normal;
+}
+
+// 重置字体大小
+small {
+  font-size: 75%;
+}
+
 // IE9 Shims
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;

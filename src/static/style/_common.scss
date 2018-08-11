@@ -1,0 +1,8 @@
+// ---------- flex容器 ----------
+.pv-flex {
+  display: flex;
+}
+
+.pv-flex.xavg > .pv-flex-item {
+  flex: 1;
+}
