@@ -1,8 +1,45 @@
 // ---------- flex容器 ----------
 .pv-flex {
   display: flex;
+  align-items: center;
 }
 
+// flex容器: 各项平分空间
 .pv-flex.xavg > .pv-flex-item {
   flex: 1;
+  text-align: center;
+}
+
+// flex项: 占全部剩余空间
+.pv-flex-item.xfull {
+  flex: 1;
+}
+
+// ---------- flex行 ----------
+.pv-flexrow {
+  display: flex;
+  align-items: center;
+  padding: 0 $spacing-small;
+  border-bottom: .5px solid $color-border-main;
+}
+
+.pv-flexrow:last-child {
+  border-bottom: none;
+}
+
+// flex行: 单元格
+.pv-flexrow-cell {
+  margin-right: $spacing-tiny;
+}
+
+.pv-flexrow-cell:last-child {
+  margin-right: 0;
+  text-align: right;
+}
+
+// ---------- 头像 ----------
+.pv-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
 }

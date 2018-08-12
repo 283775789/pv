@@ -36,11 +36,11 @@
           <div class="pv-popup-title">分享到</div>
           <div class="pv-popup-body">
             <div class="pv-flex xavg">
-              <a class="pv-flex-item xshare animated bounceInUp faster">
+              <a class="pv-flex-item xshare animated bounceInUp fast">
                 <i class="pv-ico xweixi"></i>
                 <div>微信好友</div>
               </a>
-              <a class="pv-flex-item xshare animated bounceInUp faster">
+              <a class="pv-flex-item xshare animated bounceInUp normal">
                 <i class="pv-ico xmoments"></i>
                 <div>朋友圈</div>
               </a>
@@ -64,5 +64,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "article-detail"
+  @import "style"
 </style>

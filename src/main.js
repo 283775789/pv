@@ -6,6 +6,7 @@ import '@/config/api'
 import '@/config/components'
 import App from '@/App'
 import router from '@/config/router'
+import store from '@/config/store'
 
 // 解决ios click bug
 // var attachFastClick = require('fastclick')
@@ -16,5 +17,6 @@ Vue.use(Mint)
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

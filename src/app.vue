@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- header -->
-    <pv-header>
+    <pv-header v-if="$route.meta.title">
       <pv-back
         slot="left"
         class="pv-header-backbtn">
@@ -25,10 +25,10 @@
         <i class="pv-ico xstudent"></i>
         <span>收徒赚钱</span>
       </router-link>
-      <a @click="activeIndex=3">
+      <router-link to="/me">
         <i class="pv-ico xme"></i>
         <span>个人中心</span>
-      </a>
+      </router-link>
     </div>
     <!-- /footer -->
   </div>

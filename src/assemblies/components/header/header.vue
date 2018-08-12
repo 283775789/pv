@@ -4,7 +4,7 @@
       <slot name="left"></slot>
     </div>
     <div class="pv-header-body">
-      <h1 slot="body" class="XEllipsis">
+      <h1 slot="body" class="pv_ellipsis">
         <slot></slot>
       </h1>
     </div>

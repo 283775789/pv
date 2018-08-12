@@ -1,0 +1,43 @@
+// ------------------ 用户信息 ------------------
+.pv-user {
+  display: flex;
+  align-items: center;
+  padding: $spacing-small $spacing-small 6rem;
+  margin-bottom: 2.75rem;
+  background: $color-main;
+}
+
+// 用户信息: 头像
+.pv-user-avatar {
+  width: 3rem;
+  height: 3rem;
+  margin-right: .3rem;
+  border: 2px solid #d15d5d;
+  border-radius: 50%;
+}
+
+// 用户信息: 主体
+.pv-user-body {
+  line-height: 2;
+  color: #fff;
+}
+
+// 用户信息: 用户名
+.pv-user-name {
+  font-size: $font-size-large;
+  font-weight: 700;
+}
+
+// 用户信息: 用户Id
+.pv-user-id {
+  font-size: $font-size-small;
+}
+
+// ------------------ 余额容器 ------------------
+.pv-profile {
+  position: absolute;
+  top: 4.5rem;
+  right: .5rem;
+  left: .5rem;
+}
+

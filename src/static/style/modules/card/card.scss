@@ -9,6 +9,17 @@ $card-spaceing: $spacing-tiny !default; // 卡片间距
   background: #fff;
 }
 
+// 卡片: 标题
+.pv-card-title {
+  padding: $card-padding 0;
+  border-bottom: .5px solid $color-border-main;
+}
+
+// 卡片: 主体
+.pv-card-body {
+  padding: $card-padding 0;
+}
+
 .pv-card + .pv-card {
   margin-top: $card-spaceing;
 }
@@ -22,4 +33,9 @@ $card-spaceing: $spacing-tiny !default; // 卡片间距
 .pv-card.xpy {
   padding-top: $card-padding;
   padding-bottom: $card-padding;
+}
+
+// 卡片: 带圆角
+.pv-card.xround {
+  border-radius: 5px;
 }

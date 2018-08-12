@@ -105,5 +105,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "article-list"
+  @import "style"
 </style>

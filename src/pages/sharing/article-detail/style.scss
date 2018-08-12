@@ -3,12 +3,12 @@
   padding: $spacing-small 0;
 }
 
-// 文章详情-头部
+// 文章详情: 头部
 .pv-artical-header {
   margin-bottom: $spacing-small;
 }
 
-// 文章详情-标题
+// 文章详情: 标题
 .pv-artical-title {
   line-height: 1.6;
   margin-bottom: $spacing-tiny;
@@ -16,30 +16,30 @@
   font-weight: 700;
 }
 
-// 文章详情-属性区
+// 文章详情: 属性区
 .pv-artical-props {
   display: flex;
   font-size: $font-size-small;
 }
 
-// 文章详情-日期
+// 文章详情: 日期
 .pv-artical-date {
   margin-right: $spacing-small;
   color: $color-text-weaking;
 }
 
-// 文章详情-价格
+// 文章详情: 价格
 .pv-artical-price {
   color: $color-main;
 }
 
-// 文章详情-浏览量
+// 文章详情: 浏览量
 .pv-artical-pv {
   margin-left: auto;
   color: $color-text-weaking;
 }
 
-// 文章详情-内容主体
+// 文章详情: 内容主体
 .pv-artical-body {
   font-size: $font-size-large;
 }

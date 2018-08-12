@@ -1,21 +1,62 @@
-/* 全局样式 */
+/* 全局样式常量 */
 // stylelint-disable declaration-no-important
 
-// ---------- 文本 ----------
-.XTextMain {
+// ---------- 文本:颜色 ----------
+.COLOR_MAIN {
   color: $color-text-main !important;
 }
 
-.XTextSecondary {
+.COLOR_SECONDARY {
   color: $color-text-secondary !important;
 }
 
-.XTextWeaking {
+.COLOR_WEAKING {
   color: $color-text-weaking !important;
 }
 
+.COLOR_PRICE {
+  color: $color-main !important;
+}
+
+// ---------- 文本:尺寸 ----------
+.TEXT_SMALL {
+  font-size: $font-size-small !important;
+}
+
+.TEXT_MEDIUM {
+  font-size: $font-size-medium !important;
+}
+
+.TEXT_LARGE {
+  font-size: $font-size-large !important;
+}
+
+.TEXT_HUGE {
+  font-size: $font-size-huge !important;
+}
+
+// ---------- 文本: 字重 ----------
+.TEXT_BOLD {
+  font-weight: 700 !important;
+}
+
+// ---------- 文本: 对齐 ----------
+.TEXT_CENTER {
+  text-align: center !important;
+}
+
+.TEXT_RIGHT {
+  text-align: right !important;
+}
+
+// ---------- 间距 ----------
+.MB_SMAlL {
+  margin-bottom: $spacing-small !important;
+}
+
+
 // ---------- 超出省略文本 ----------
-.XEllipsis {
+.ELLIPSIS {
   @include cutoff();
 }
 
@@ -30,7 +71,7 @@
   }
 }
 
-.XRotating {
+.ROTATING {
   transform-origin: center center;
   animation: rotating 2s linear infinite;
 }

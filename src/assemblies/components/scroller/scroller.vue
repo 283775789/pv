@@ -6,7 +6,7 @@
             class="pv-scroller-loading xlatest"
             :class="{xloading: this.isLoadingLatest }">
             <i class="pv-font xloading"
-              :class="{'XRotating': this.isLoadingLatest}">
+              :class="{'XROTATING': this.isLoadingLatest}">
             </i>
             <slot name="loading-latest-text">
               <span>{{this.isLoadingLatest ? '更新中...' : "下拉更新"}}</span>
@@ -18,7 +18,7 @@
        </div>
        <div v-if="isLoadingMore"
             class="pv-scroller-loading xmore">
-            <i class="pv-font xloading XRotating"></i>
+            <i class="pv-font xloading XROTATING"></i>
             <slot name="loading-more-text">
               <span>努力加载中...</span>
             </slot>
