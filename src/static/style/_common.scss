@@ -15,11 +15,25 @@
   flex: 1;
 }
 
+// flex项: 带分隔线
+.pv-flex.xseparator .pv-flex-item {
+  position: relative;
+}
+
+.pv-flex.xseparator .pv-flex-item + .pv-flex-item:before {
+  content: "";
+  position: absolute;
+  top: .35rem;
+  bottom: .35rem;
+  left: 0;
+  border-left: .5px solid $color-border-main;
+}
+
 // ---------- flex行 ----------
 .pv-flexrow {
   display: flex;
   align-items: center;
-  padding: 0 $spacing-small;
+  padding: $spacing-small 0;
   border-bottom: .5px solid $color-border-main;
 }
 
@@ -37,9 +51,85 @@
   text-align: right;
 }
 
+// flex行: 平分宽度
+.pv-flexrow.xavg > .pv-flexrow-cell {
+  flex: 1;
+}
+
+// flex行: 节约空间
+.pv-flexrow.xavg.xsavespacing {
+  padding: $spacing-tiny 0;
+}
+
 // ---------- 头像 ----------
 .pv-avatar {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
+}
+
+.pv-avatar.xlarge {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+// ---------- 序号 ----------
+.pv-no {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  font-size: $font-size-small;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  background: #beafaf;
+}
+
+// ---------- 说明 ----------
+.pv-note {
+  padding: $spacing-medium;
+  text-align: left;
+}
+
+.pv-note > h4 {
+  margin-bottom: $spacing-tiny;
+  font-weight: bold;
+}
+
+.pv-note > p {
+  margin-bottom: $spacing-tiny;
+  font-size: $font-size-small;
+  color: $color-text-weaking;
+}
+
+.pv-note > p:last-child {
+  margin-bottom: 0;
+}
+
+// ---------- 表单信息 ----------
+.pv-form-row {
+  display: flex;
+  align-items: center;
+  padding: $spacing-medium;
+  margin-bottom: $spacing-tiny;
+  background: #fff;
+}
+
+.pv-form-label {
+  padding-right: $spacing-tiny;
+  font-size: $font-size-medium;
+  text-align: right;
+}
+
+.pv-form-body {
+  flex: 1;
+  color: $color-text-secondary;
+  text-align: left;
+}
+
+.pv-form.xreadonly .pv-form-row {
+  padding: $spacing-tiny;
+  margin-bottom: 0;
+  background: transparent;
 }

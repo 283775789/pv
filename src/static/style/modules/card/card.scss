@@ -39,3 +39,8 @@ $card-spaceing: $spacing-tiny !default; // 卡片间距
 .pv-card.xround {
   border-radius: 5px;
 }
+
+// 卡片: 带下边框
+.pv-card.xborder {
+  border: .5px solid $color-border-main;
+}

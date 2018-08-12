@@ -1,6 +1,17 @@
 /* 全局样式常量 */
 // stylelint-disable declaration-no-important
 
+// ---------- flex ----------
+.FLEX1 {
+  flex: 1;
+}
+
+// ---------- 背景 ----------
+.BG_WHITE {
+  background: #fff;
+}
+
+
 // ---------- 文本:颜色 ----------
 .COLOR_MAIN {
   color: $color-text-main !important;
@@ -52,6 +63,35 @@
 // ---------- 间距 ----------
 .MB_SMAlL {
   margin-bottom: $spacing-small !important;
+}
+
+.P_MEDIUM {
+  padding: $spacing-medium !important;
+}
+
+.PY_STEP {
+  padding-top: $spacing-step !important;
+  padding-bottom: $spacing-step !important;
+}
+
+.PY_TINY {
+  padding-top: $spacing-tiny !important;
+  padding-bottom: $spacing-tiny !important;
+}
+
+.PY_MEDIUM {
+  padding-top: $spacing-medium !important;
+  padding-bottom: $spacing-medium !important;
+}
+
+.PY_LARGE {
+  padding-top: 1.75rem !important;
+  padding-bottom: 1.75rem !important;
+}
+
+// ---------- 边框 ----------
+.BORDER_BOTTOM {
+  border-bottom: .5px solid $color-border-main;
 }
 
 

@@ -8,7 +8,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // 分享
-import Home from '@pages/sharing/article-list'
+import Home from '@pages/sharing/home'
 import ArticalDetail from '@pages/sharing/article-detail'
 
 // 收徒
@@ -97,7 +97,7 @@ export default new Router({
       path: '/ranking-list',
       component: RankingList,
       meta: {
-        title: '收入明细',
+        title: '排行榜',
         level: 2
       }
     },

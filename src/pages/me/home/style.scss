@@ -1,43 +1,26 @@
-// ------------------ 用户信息 ------------------
-.pv-user {
+// ------------------ 用户信息容器: 显示在个人中心首页 ------------------
+.pv-profile.xhome > .pv-user {
   display: flex;
-  align-items: center;
-  padding: $spacing-small $spacing-small 6rem;
-  margin-bottom: 2.75rem;
-  background: $color-main;
 }
 
-// 用户信息: 头像
-.pv-user-avatar {
-  width: 3rem;
-  height: 3rem;
-  margin-right: .3rem;
-  border: 2px solid #d15d5d;
-  border-radius: 50%;
+.pv-profile.xhome .xlv2 {
+  display: none;
 }
 
-// 用户信息: 主体
-.pv-user-body {
-  line-height: 2;
-  color: #fff;
-}
-
-// 用户信息: 用户名
-.pv-user-name {
-  font-size: $font-size-large;
-  font-weight: 700;
-}
-
-// 用户信息: 用户Id
-.pv-user-id {
-  font-size: $font-size-small;
-}
-
-// ------------------ 余额容器 ------------------
-.pv-profile {
+// 余额容器
+.pv-profile.xhome > .pv-card {
   position: absolute;
   top: 4.5rem;
   right: .5rem;
   left: .5rem;
+  border-radius: 5px;
 }
 
+// 提现按钮
+.pv-btn.xwithdraw {
+  display: none;
+}
+
+.pv-profile.xhome .pv-btn.xwithdraw {
+  display: inline-block;
+}

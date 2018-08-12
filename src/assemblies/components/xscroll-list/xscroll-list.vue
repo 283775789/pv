@@ -51,7 +51,7 @@ export default {
 
     // set the offset and width for the marker line.
     setMarkerLineStyle (itemIndex) {
-      const activeItem = this.$refs.item[itemIndex]
+      const activeItem = this.$refs.item[itemIndex].querySelector(':first-child')
       const markLine = this.$refs['marker-line']
       markLine.style.width = activeItem.clientWidth + 'px'
       markLine.style.left = activeItem.offsetLeft + 'px'

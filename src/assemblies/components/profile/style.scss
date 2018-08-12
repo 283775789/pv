@@ -1,0 +1,46 @@
+// ------------------ 用户信息 ------------------
+.pv-user {
+  display: none;
+  align-items: center;
+  padding: $spacing-small $spacing-small 6rem;
+  margin-bottom: 2.75rem;
+  background: $color-main;
+}
+
+// 用户信息: 头像
+.pv-user-avatar {
+  width: 3rem;
+  height: 3rem;
+  margin-right: .3rem;
+  border: 2px solid #d15d5d;
+  border-radius: 50%;
+}
+
+// 用户信息: 主体
+.pv-user-body {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  line-height: 2;
+  color: #fff;
+}
+
+.pv-user-body > .xlv2 {
+  text-align: center;
+}
+
+// 用户信息: 信息项
+.pv-user-body > li {
+  flex: 1;
+}
+
+// 用户信息: 信息标签
+.pv-user-label {
+  font-size: $font-size-large;
+  font-weight: 700;
+}
+
+// 用户信息: 用户Id
+.pv-user-id {
+  font-size: $font-size-small;
+}

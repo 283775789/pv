@@ -1,44 +1,79 @@
 <template>
-  <!-- profile -->
-  <div class="pv-card">
-    <div class="pv-card-title">
-      <div class="pv-flex">
-        <div class="pv-flex-item xfull">
-          <span class="TEXT_LARGE TEXT_BOLD COLOR_PRICE">余额: {{userData.balance}}元</span>
-          <span class="COLOR_SECONDARY">(总收入:{{userData.income}}元)</span>
+  <div class="pv-profile">
+    <!-- user -->
+    <div class="pv-user">
+      <img class="pv-user-avatar" src="">
+      <ul class="pv-user-body">
+        <li>
+          <div class="pv-user-label">用户名</div>
+          <div class="pv-user-id">ID:88888888</div>
+        </li>
+        <li class="xlv2">
+          <div class="pv-user-label">3507089</div>
+          <div class="pv-user-id">累计收益</div>
+        </li>
+        <li class="xlv2">
+          <div class="pv-user-label">5756</div>
+          <div class="pv-user-id">累计收徒</div>
+        </li>
+      </ul>
+    </div>
+    <!-- /user -->
+
+    <!-- profile -->
+    <div class="pv-card xprofile">
+      <div class="pv-card-title">
+        <div class="pv-flex">
+          <div class="pv-flex-item xfull">
+            <span class="TEXT_LARGE TEXT_BOLD COLOR_PRICE">余额: {{userData.balance || 0}}元</span>
+            <span class="COLOR_SECONDARY">(总收入:{{userData.income || 0}}元)</span>
+          </div>
+          <div class="pv-flex-item TEXT_RIGHT">
+            <router-link
+              class="pv-btn xmain xwithdraw"
+              to="/withdraw">
+              我要提现
+            </router-link>
+          </div>
         </div>
-        <div class="pv-flex-item TEXT_RIGHT">
-          <a class="pv-btn xmain">我要提现</a>
+      </div>
+      <div class="pv-card-body">
+        <div class="pv-flex xavg"
+          :class="{xseparator: separator}">
+          <div class="pv-flex-item">
+            <div class="TEXT_LARGE TEXT_BOLD">{{userData.todayincome || 0}}</div>
+            <div class="COLOR_WEAKING">今日收入</div>
+          </div>
+          <div class="pv-flex-item">
+            <div class="TEXT_LARGE TEXT_BOLD">{{userData.todayinvite || 0}}</div>
+            <div class="COLOR_WEAKING">今日收徒</div>
+          </div>
+          <div class="pv-flex-item">
+            <div class="TEXT_LARGE TEXT_BOLD">{{userData.stucount || 0}}</div>
+            <div class="COLOR_WEAKING">我的徒弟</div>
+          </div>
+          <div class="pv-flex-item">
+            <div class="TEXT_LARGE TEXT_BOLD">{{userData.studivide || 0}}</div>
+            <div class="COLOR_WEAKING">徒弟分成</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="pv-card-body">
-      <div class="pv-flex xavg">
-        <div class="pv-flex-item">
-          <div class="TEXT_LARGE TEXT_BOLD">{{userData.todayincome}}</div>
-          <div class="COLOR_WEAKING">今日收入</div>
-        </div>
-        <div class="pv-flex-item">
-          <div class="TEXT_LARGE TEXT_BOLD">{{userData.todayinvite}}</div>
-          <div class="COLOR_WEAKING">今日收徒</div>
-        </div>
-        <div class="pv-flex-item">
-          <div class="TEXT_LARGE TEXT_BOLD">{{userData.stucount}}</div>
-          <div class="COLOR_WEAKING">我的徒弟</div>
-        </div>
-        <div class="pv-flex-item">
-          <div class="TEXT_LARGE TEXT_BOLD">{{userData.studivide}}</div>
-          <div class="COLOR_WEAKING">徒弟分成</div>
-        </div>
-      </div>
-    </div>
+    <!-- /profile -->
   </div>
-  <!-- /profile -->
 </template>
 
 <script>
 export default {
   name: 'pv-profile',
+
+  props: {
+    separator: {
+      type: Boolean,
+      default: false
+    }
+  },
+
   computed: {
     userData () {
       return this.$store.state.userData
@@ -46,3 +81,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import "style"
+</style>

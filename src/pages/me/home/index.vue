@@ -1,20 +1,6 @@
 <template>
   <div class="pv-body xfooter" id="me-home">
-    <!-- user -->
-    <div class="pv-user">
-      <img class="pv-user-avatar" src="">
-      <div class="pv-user-body">
-        <div class="pv-user-name">用户名</div>
-        <div class="pv-user-id">ID:88888888</div>
-      </div>
-    </div>
-    <!-- /user -->
-
-    <!-- profile -->
-    <div class="pv-profile">
-      <pv-profile class="xround" />
-    </div>
-    <!-- /profile -->
+    <pv-profile class="xhome" />
 
     <!-- navigation -->
     <div class="pv-card xpy">
@@ -62,11 +48,18 @@
     <!-- navigation -->
 
     <!-- withdraw list -->
-    <div class="pv-body-inner xscroll" style="top: 20rem;">
+    <div class="pv-body-inner xscroll BG_WHITE" style="top: 20rem;">
       <div class="pv-card">
         <div class="pv-flexrow">
           <div class="pv-flexrow-cell">
             <img class="pv-avatar" src="" />
+          </div>
+          <div class="pv-flexrow-cell">
+            <div class="TEXT_MEDIUM">名字</div>
+            <div class="TEXT_SMALL COLOR_WEAKING">2018-01-01</div>
+          </div>
+          <div class="pv-flexrow-cell FLEX1">
+            <span class="TEXT_MEDIUM">提现100元</span>
           </div>
         </div>
       </div>
@@ -80,6 +73,7 @@ import Profile from '@comps/profile'
 
 export default {
   name: 'pv-page-me-home',
+
   components: {
     'pv-profile': Profile
   }

@@ -1,0 +1,11 @@
+// ------------------ 用户信息容器: 显示在个人中心首页 ------------------
+.pv-profile.xranking > .pv-user {
+  display: flex;
+  padding: $spacing-medium $spacing-small;
+  margin-bottom: 0;
+}
+
+// 余额容器
+.pv-profile.xranking > .pv-card.xprofile {
+  display: none;
+}

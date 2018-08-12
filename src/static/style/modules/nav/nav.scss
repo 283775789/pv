@@ -14,12 +14,12 @@ $nav-active-line-color: $color-main !default; // 选中项标识线颜色
   left: 0;
   width: 100%;
   background: $nav-bg;
-  border-bottom: 1px solid $nav-border-color;
+  border-bottom: .5px solid $nav-border-color;
 }
 
 // 导航：链接
 .pv-nav-link {
-  display: block;
+  display: inline-block;
   height: $nav-height;
   line-height: $nav-height;
   font-size: $nav-link-font-size;
@@ -31,7 +31,36 @@ $nav-active-line-color: $color-main !default; // 选中项标识线颜色
   }
 }
 
+// 带分隔线
+.pv-nav.xseparator .pv-xsl-item {
+  position: relative;
+}
+
+.pv-nav.xseparator .pv-xsl-item + .pv-xsl-item:before {
+  content: "";
+  position: absolute;
+  top: .35rem;
+  left: 0;
+  height: $nav-height - .7;
+  border-left: .5px solid $color-border-main;
+}
+
 // 导航: 页面有头部时
 .pv-nav.xheader {
   top: $header-height;
+}
+
+// 导航: tab导航
+.pv-nav.xtab {
+  position: static;
+  text-align: center;
+  border-bottom: .5px solid $nav-border-color;
+}
+
+.pv-nav.xtab > .pv-xsl-body {
+  display: flex;
+}
+
+.pv-nav.xtab > .pv-xsl-body > li {
+  flex: 1;
 }

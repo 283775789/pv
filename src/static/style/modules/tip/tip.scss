@@ -1,0 +1,33 @@
+/* 小提示 */
+$tip-bg: $color-main !default; // 背景色
+$tip-color: #fff !default; // 文本颜色
+$tip-height: 1rem !default; // 高度
+$tip-font-size: $font-size-small !default; // 字体大小
+
+// 提示: 容器
+.pv-tip {
+  position: absolute;
+  left: 50%;
+  line-height: $tip-height;
+  padding: 0 5px;
+  font-size: $tip-font-size;
+  color: $tip-color;
+  white-space: nowrap;
+  background: $tip-bg;
+  border-radius: 5px;
+}
+
+.pv-tip:after {
+  content: "";
+  position: absolute;
+  bottom: -.6rem;
+  left: 50%;
+  display: inline-block;
+  transform: translateX(-50%);
+  @include triangle(down, .3rem, $tip-bg);
+}
+
+.pv-tip.xtop {
+  top: 0;
+  transform: translate(-50%, -130%);
+}

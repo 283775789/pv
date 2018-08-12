@@ -50,7 +50,7 @@
                         </div>
                       </li>
                     </ul>
-                    <!-- artical list -->
+                    <!-- /artical list -->
                   </pv-scroller>
                 </div>
                 <div class="swiper-slide">Slide 2</div>
