@@ -1,10 +1,10 @@
-# 图标
+# 环境配置
 
-+ 因图标用的不是字体图标，需要合成雪碧图， 合成图标命令:
+1. 安装node.js
 
-```
-npm run icons
-```
+2. 命令行运行 `npm install -g cnpm --registry=https://registry.npm.taobao.org`, 安装国内淘宝npm镜像
+
+3. 项目根目录运行`cnpm install`安装所有插件
 
 # 启用开发环境
 
@@ -16,6 +16,14 @@ npm run dev
 
 ```
 npm run build
+```
+
+# 图标
+
++ 因图标用的不是字体图标，需要合成雪碧图， 合成图标命令:
+
+```
+npm run icons
 ```
 
 # 代码框架

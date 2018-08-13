@@ -1,5 +1,5 @@
 <template>
-  <div class="pv-body" id="student-invite">
+  <div class="pv-body xscroll" id="student-invite">
     <!-- 活动海报 -->
     <div class="pv-bill xinvite">
       <div class="TEXT_CENTER">
@@ -8,7 +8,7 @@
         <a class="pv-btn xbgyellow">立刻下载</a>
       </div>
 
-      <div class="pv-body-inner xnobg" style="top:20.4rem; bottom: .5rem;">
+      <div class="pv-body-inner xnobg" style="min-height:12.5rem; top:20.4rem; bottom: .5rem;">
         <div class="pv-card xwithdraw">
           <div class="pv-title xweaking">
             <span>平台提现动态</span>
