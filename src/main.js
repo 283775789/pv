@@ -7,7 +7,10 @@ import '@/config/components'
 import App from '@/App'
 import router from '@/config/router'
 import store from '@/config/store'
+import 'swiper/dist/css/swiper.css'
+import Swiper from 'swiper/dist/js/swiper.js'
 
+window.Swiper = Swiper
 // 解决ios click bug
 // var attachFastClick = require('fastclick')
 // attachFastClick.attach(document.body)

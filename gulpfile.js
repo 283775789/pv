@@ -39,8 +39,8 @@ const appTasks = {
         }
 
         sprite.rem = {
-          offset_x: sprite.x / 40 + 'rem',
-          offset_y: sprite.y / 40 + 'rem',
+          offset_x: -sprite.x / 40 + 'rem',
+          offset_y: -sprite.y / 40 + 'rem',
           width: sprite.width / 40 + 'rem',
           height: sprite.height / 40 + 'rem',
           total_width: sprite.total_width / 40 + 'rem',

@@ -1,0 +1,46 @@
+// 通知区
+.pv-notice {
+  position: relative;
+  z-index: 1;
+  height: 1.75rem;
+  line-height: 1.75rem;
+  padding-left: 20%;
+  overflow: hidden;
+  color: #fff;
+  background: #f28776;
+}
+
+.pv-notice .pv-flex-item {
+  height: 1.75rem;
+  padding-left: $spacing-step;
+}
+
+// 二维码容器
+.pv-card.xqrcode {
+  position: absolute;
+  bottom: 2.375rem;
+  left: 12.5%;
+  width: 75%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.pv-card.xqrcode > .pv-card-body {
+  padding: .75rem;
+  text-align: center;
+  border: .5px dashed #ef624b;
+}
+
+.pv-card.xqrcode > .pv-card-body > .xqrcode {
+  width: 5.5rem;
+  height: 5.5rem;
+}
+
+.pv-card.xqrcode > .pv-card-body > .pv-title {
+  width: 100%;
+  color: $color-text-weaking;
+}
+
+.pv-card.xqrcode > .pv-card-body > .pv-title:after {
+  background: $color-text-weaking;
+}

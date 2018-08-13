@@ -1,9 +1,9 @@
 <template>
   <div class="pv-body xheader" id="me-business">
     <div class="pv-body-inner xscroll xfooter">
+      <img src="/static/images/b-banner.png" style="width:100%; height:7.5rem;" />
       <!-- 平台优势 -->
       <div class="pv-card xpy">
-        <img src="ddd" alt="">
         <div class="pv-title">
           <span>平台优势</span>
         </div>
@@ -11,7 +11,7 @@
           <div class="pv-flex-item">
             <div class="pv-media">
               <div class="pv-media-imgbox">
-                <img src="" alt="">
+                <img src="/static/images/b-user.png" />
                 <i class="pv-ico xuser"></i>
               </div>
               <div class="pv-media-body">
@@ -23,7 +23,7 @@
           <div class="pv-flex-item">
             <div class="pv-media">
               <div class="pv-media-imgbox">
-                <img src="" alt="">
+                <img src="/static/images/b-content.png" />
                 <i class="pv-ico xcontent"></i>
               </div>
               <div class="pv-media-body">
@@ -37,8 +37,8 @@
           <div class="pv-flex-item">
             <div class="pv-media">
               <div class="pv-media-imgbox">
-                <img src="" alt="">
-                <i class="pv-ico xuser"></i>
+                <img src="/static/images/b-data.png" />
+                <i class="pv-ico xdata"></i>
               </div>
               <div class="pv-media-body">
                 <h4 class="pv-media-title">数据</h4>
@@ -49,8 +49,8 @@
           <div class="pv-flex-item">
             <div class="pv-media">
               <div class="pv-media-imgbox">
-                <img src="" alt="">
-                <i class="pv-ico xcontent"></i>
+                <img src="/static/images/b-technology.png" />
+                <i class="pv-ico xtechnology"></i>
               </div>
               <div class="pv-media-body">
                 <h4 class="pv-media-title">技术</h4>
@@ -99,7 +99,7 @@
 
 <script>
 export default {
-  name: 'pv-business'
+  name: 'pv-me-business'
 }
 </script>
 

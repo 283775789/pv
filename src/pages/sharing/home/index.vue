@@ -71,9 +71,6 @@
 </template>
 
 <script>
-import 'swiper/dist/css/swiper.css'
-import Swiper from 'swiper/dist/js/swiper.js'
-
 export default {
   name: 'pv-page-sharing-home',
 
@@ -95,7 +92,7 @@ export default {
   },
 
   mounted () {
-    this.swiper = new Swiper('.swiper-container', {
+    this.swiper = new window.Swiper('.swiper-container', {
       on: {
         slideChange: this.changeCategoryPage
       }

@@ -34,7 +34,7 @@
         <router-link
            class="pv-flex-item"
            to="/service">
-          <i class="pv-ico xsevice"></i>
+          <i class="pv-ico xservice"></i>
           <div>客服</div>
         </router-link>
         <router-link

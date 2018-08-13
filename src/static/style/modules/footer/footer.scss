@@ -28,7 +28,7 @@ $footer-font-size: $font-size-small !default; // 字号
   color: $footer-color;
   text-align: center;
 
-  &.xactive {
+  &.xcurrent {
     color: $footer-active-color;
   }
 }

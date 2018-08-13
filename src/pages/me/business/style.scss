@@ -10,6 +10,10 @@
 // 营销资源容器
 .pv-flex.xbgbox {
   height: 6rem;
+  line-height: 1.8;
+  margin-bottom: $spacing-large;
   font-size: $font-size-medium;
   color: #fff;
+  background: url("/static/images/b-footer.png") no-repeat center center;
+  background-size: 100%, 100%;
 }

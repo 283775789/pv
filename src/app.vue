@@ -21,8 +21,8 @@
         <i class="pv-ico xshare"></i>
         <span>分享赚钱</span>
       </router-link>
-      <router-link to="/p2">
-        <i class="pv-ico xfollower"></i>
+      <router-link to="/student">
+        <i class="pv-ico xstudent"></i>
         <span>收徒赚钱</span>
       </router-link>
       <router-link to="/me">
