@@ -1,0 +1,17 @@
+/* 多选框列表 */
+.pv-checklist {
+  padding: $spacing-tiny 0;
+}
+
+.pv-checklist > label {
+  display: block;
+  line-height: 1.6;
+}
+
+.pv-checklist input {
+  position: relative;
+  top: 2px;
+  width: .8rem;
+  height: .8rem;
+  margin-right: $spacing-tiny;
+}

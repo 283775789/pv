@@ -138,7 +138,7 @@ export default new Router({
       component: BusinessForm,
       meta: {
         title: '申请合作',
-        level: 2
+        level: 3
       }
     }
   ]

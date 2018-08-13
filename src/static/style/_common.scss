@@ -57,7 +57,7 @@
 }
 
 // flex行: 节约空间
-.pv-flexrow.xavg.xsavespacing {
+.pv-flexrow.xsavespacing {
   padding: $spacing-tiny 0;
 }
 
@@ -107,11 +107,21 @@
   margin-bottom: 0;
 }
 
+.pv-note.xlarge {
+  font-size: $font-size-large;
+}
+
+.pv-note.xlarge > p {
+  margin-bottom: $spacing-medium;
+  font-size: $font-size-large;
+  color: $color-text-main;
+}
+
 // ---------- 表单信息 ----------
 .pv-form-row {
   display: flex;
   align-items: center;
-  padding: $spacing-medium;
+  padding: $spacing-tiny $spacing-medium;
   margin-bottom: $spacing-tiny;
   background: #fff;
 }
@@ -128,6 +138,13 @@
   text-align: left;
 }
 
+.pv-form-body > input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+}
+
 .pv-form.xreadonly .pv-form-row {
   padding: $spacing-tiny;
   margin-bottom: 0;
@@ -139,11 +156,15 @@
   position: relative;
   width: 70%;
   padding: 1rem 0;
+  margin: 0 auto;
   font-size: $font-size-large;
   font-weight: bold;
+  text-align: center;
 }
 
 .pv-title > span {
+  position: relative;
+  z-index: 1;
   display: inline-block;
   padding: 0 .3rem;
   background: #fff;
@@ -153,6 +174,7 @@
   content: "";
   position: absolute;
   top: 50%;
+  left: 0;
   width: 100%;
   height: 1px;
   background: #666;
@@ -186,7 +208,7 @@
 }
 
 .pv-media-body {
-  height: 10.5rem;
+  height: 6.35rem;
   padding: 1.5rem .75rem .75rem;
   border: .5px solid #ddd;
   border-top: none;
@@ -196,8 +218,13 @@
   margin-bottom: $spacing-step;
   font-size: $font-size-medium;
   font-weight: bold;
+  text-align: center;
 }
 
 .pv-media-des {
   color: $color-text-secondary;
+}
+
+.pv-media-imgbox + .pv-media-imgbox {
+  margin-left: $spacing-medium;
 }
