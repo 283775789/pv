@@ -1,3 +1,8 @@
+// ---------- 全局头部按钮 ----------
+.pv-headerbtn {
+  position: absolute;
+}
+
 // ---------- flex容器 ----------
 .pv-flex {
   display: flex;
@@ -68,9 +73,14 @@
   border-radius: 50%;
 }
 
-.pv-avatar.xlarge {
+.pv-avatar.xlarge,
+.pv-avatar.xinvite {
   width: 3.75rem;
   height: 3.75rem;
+}
+
+.pv-avatar.xinvite {
+  border: 2px solid #f4e394;
 }
 
 // ---------- 序号 ----------
@@ -101,6 +111,21 @@
   margin-bottom: $spacing-tiny;
   font-size: $font-size-small;
   color: $color-text-weaking;
+}
+
+.pv-note-group > p {
+  line-height: 1.8;
+  margin-bottom: 0;
+  font-size: $font-size-medium;
+}
+
+.pv-note-group {
+  margin-bottom: $spacing-medium;
+}
+
+.pv-note > h3 {
+  font-size: $font-size-medium;
+  font-weight: 700;
 }
 
 .pv-note > p:last-child {
@@ -180,6 +205,15 @@
   background: #666;
 }
 
+.pv-title.xweaking {
+  padding: .5rem 0;
+  color: $color-text-weaking;
+}
+
+.pv-title.xweaking:after {
+  background: $color-text-weaking;
+}
+
 // ---------- 圆形背景图标 ----------
 .pv-icircle {
   display: inline-block;
@@ -234,6 +268,7 @@
 .pv-bill {
   position: relative;
   width: 100%;
+  background-color: #fff;
   background-size: 100% 100%;
 }
 
@@ -241,4 +276,17 @@
   height: 25.875rem;
   margin-top: -1.75rem;
   background-image: url("/static/images/student-bg.png");
+}
+
+.pv-bill.xinvite {
+  height: 100%;
+  padding-top: 1.35rem;
+  background-image: url("/static/images/invite-bg.png");
+}
+
+.pv-bill.xinvite .pv-btn.xbgyellow {
+  position: absolute;
+  top: 15rem;
+  left: 50%;
+  transform: translateX(-50%);
 }

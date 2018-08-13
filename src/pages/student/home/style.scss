@@ -29,18 +29,10 @@
   padding: .75rem;
   text-align: center;
   border: .5px dashed #ef624b;
+  border-radius: 5px;
 }
 
 .pv-card.xqrcode > .pv-card-body > .xqrcode {
   width: 5.5rem;
   height: 5.5rem;
-}
-
-.pv-card.xqrcode > .pv-card-body > .pv-title {
-  width: 100%;
-  color: $color-text-weaking;
-}
-
-.pv-card.xqrcode > .pv-card-body > .pv-title:after {
-  background: $color-text-weaking;
 }

@@ -13,6 +13,7 @@ import ArticalDetail from '@pages/sharing/article-detail'
 
 // 收徒
 import Student from '@pages/student/home'
+import Invite from '@pages/student/invite'
 
 // 个人中心
 import Me from '@pages/me/home'
@@ -58,6 +59,13 @@ export default new Router({
       meta: {
         title: '邀请好友',
         level: 1
+      }
+    },
+    {
+      path: '/invite',
+      component: Invite,
+      meta: {
+        level: 2
       }
     },
     // 路由:个人中心

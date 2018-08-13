@@ -40,6 +40,18 @@ $border-btn-border-color: $color-border-button !default; // 主按钮边框颜�
   border-color: $secondary-btn-border-color;
 }
 
+// 按钮: 图片背景
+.pv-btn.xbgyellow {
+  width: 9.925rem;
+  height: 3.45rem;
+  line-height: 3rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #f32f30;
+  background: url("/static/images/btn-bg1.png") no-repeat;
+  background-size: 100% 100%;
+}
+
 // 按钮: 边框
 .pv-btn.xborder {
   color: $border-btn-color;

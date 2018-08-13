@@ -31,6 +31,11 @@ $body-bg: $color-bg-body !default; // 背景色
   bottom: $footer-height;
 }
 
+// 主体及主体内部内容区:无背景
+.pv-body-inner.xnobg {
+  background: transparent;
+}
+
 // 主体及主体内部内容区:页面有tab导航时
 .pv-body.xnav,
 .pv-body-inner.xnav {

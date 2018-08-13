@@ -29,6 +29,10 @@
   color: $color-main !important;
 }
 
+.COLOR_LINK {
+  color: $color-text-link !important;
+}
+
 // ---------- 文本:尺寸 ----------
 .TEXT_SMALL {
   font-size: $font-size-small !important;
@@ -61,6 +65,10 @@
 }
 
 // ---------- 间距 ----------
+.MT_0 {
+  margin-top: 0 !important;
+}
+
 .MB_SMAlL {
   margin-bottom: $spacing-small !important;
 }

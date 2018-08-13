@@ -1,4 +1,4 @@
-// 注册通用的全局组件
+// register global component
 import Vue from 'vue'
 import Header from '@comps/header/header'
 import XScrollList from '@comps/xscroll-list/xscroll-list'
@@ -6,6 +6,7 @@ import Back from '@comps/back/back'
 import Slider from '@comps/slider/slider'
 import RouterView from '@comps/router-view/router-view'
 import Scroller from '@comps/scroller/scroller'
+import Ghost from '@comps/ghost'
 
 const components = [
   Header,
@@ -13,7 +14,8 @@ const components = [
   Back,
   Slider,
   RouterView,
-  Scroller
+  Scroller,
+  Ghost
 ]
 
 components.forEach(function (component) {

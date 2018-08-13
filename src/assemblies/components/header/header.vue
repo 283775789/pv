@@ -8,7 +8,7 @@
         <slot></slot>
       </h1>
     </div>
-    <div class="pv-header-right">
+    <div id="header-right" class="pv-header-right">
       <slot name="right"></slot>
     </div>
   </div>
