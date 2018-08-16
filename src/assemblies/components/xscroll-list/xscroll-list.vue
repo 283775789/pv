@@ -1,13 +1,13 @@
 <template>
-  <div class="pv-xsl">
+  <div v-if="list.length !== 0" class="pv-xsl">
     <ul ref="body" class="pv-xsl-body">
       <li ref="item"
-          v-for="index in number"
+          v-for="(item, index) in list"
           class="pv-xsl-item"
-          :class="{xactive: currentIndex === index -1}"
+          :class="{xactive: currentIndex === index}"
           :key="index"
           @click="clickItem(index)">
-          <slot :index="index"></slot>
+          <slot :item="item"></slot>
       </li>
       <li ref="marker-line" class="pv-xsl-line"></li>
     </ul>
@@ -21,8 +21,8 @@ export default {
   name: 'pv-xscroll-list',
 
   props: {
-    number: {
-      type: Number,
+    list: {
+      type: Array,
       required: true
     },
     activeIndex: {
@@ -83,21 +83,31 @@ export default {
     },
 
     clickItem (index) {
-      const itemIndex = index - 1
-      if (itemIndex === this.currentIndex) return
+      if (index === this.currentIndex) return
 
-      this.currentIndex = itemIndex
-      this.updateStates(itemIndex)
-      this.$emit('change', itemIndex)
+      this.currentIndex = index
+      this.updateStates(index)
+      this.$emit('change', index)
     }
   },
 
   mounted () {
+    if (this.list.length === 0) return
+
     this.hideScrollBar()
     this.updateStates(this.activeIndex)
   },
 
   watch: {
+    list () {
+      if (this.list.length === 0) return
+
+      this.$nextTick(() => {
+        this.hideScrollBar()
+        this.updateStates(this.activeIndex)
+      })
+    },
+
     activeIndex (val) {
       this.currentIndex = val
       this.updateStates(val)

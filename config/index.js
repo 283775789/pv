@@ -10,10 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/mobile-server':{
+        target: 'http://wz.xiaomie.shop',
+        changeOrigin: true
+      }
+    },
 
     // Various Dev Server settings
-    host: '192.168.191.1', // can be overwritten by process.env.HOST
+    host: '192.168.0.3', // can be overwritten by process.env.HOST
     port: 9527, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
