@@ -1,6 +1,6 @@
 # 环境配置
 
-1. 安装node.js
+1. 安装node环境
 
 2. 命令行运行 `npm install -g cnpm --registry=https://registry.npm.taobao.org`, 安装国内淘宝npm镜像
 

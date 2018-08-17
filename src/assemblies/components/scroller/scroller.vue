@@ -4,21 +4,21 @@
        <div ref="top-loading"
             v-if="refreshDistance > 0"
             class="pv-scroller-loading xlatest"
-            :class="{xloading: this.isLoadingLatest }">
+            :class="{xloading: this.isLoading }">
             <i class="pv-font xloading"
-              :class="{'XROTATING': this.isLoadingLatest}">
+              :class="{'ROTATING': this.isLoading}">
             </i>
             <slot name="loading-latest-text">
-              <span>{{this.isLoadingLatest ? '更新中...' : "下拉更新"}}</span>
+              <span>{{this.isLoading ? '更新中...' : "下拉更新"}}</span>
             </slot>
        </div>
        <div ref="inner"
             class="pv-scroller-inner">
             <slot></slot>
        </div>
-       <div v-if="isLoadingMore"
+       <div v-if="isLoading && loadType === 'more'"
             class="pv-scroller-loading xmore">
-            <i class="pv-font xloading XROTATING"></i>
+            <i class="pv-font xloading ROTATING"></i>
             <slot name="loading-more-text">
               <span>努力加载中...</span>
             </slot>
@@ -55,8 +55,7 @@ export default {
         distanceX: 0,
         distanceY: 0
       },
-      isLoadingLatest: false,
-      isLoadingMore: false,
+      loadType: 'latest',
       hasPulldownEvent: false
     }
   },
@@ -82,6 +81,7 @@ export default {
     },
 
     startPulldown (event) {
+      this.loadType = 'latest'
       this.hasPulldownEvent = true
       this.offset.startY = event.touches[0].pageY
     },
@@ -99,8 +99,8 @@ export default {
     },
 
     endPulldown (event) {
-      if (this.offset.distanceY >= this.refreshDistance && !this.isLoadingLatest) {
-        this.isLoadingLatest = true
+      if (this.offset.distanceY >= this.refreshDistance && !this.isLoading) {
+        this.$emit('update:isLoading', true)
         this.$emit('refresh')
       }
 
@@ -111,6 +111,7 @@ export default {
     },
 
     scrollHandler () {
+      this.loadType = 'more'
       const scroller = this.$el
 
       // remove all the pulldown events when the scroll event is triggered.
@@ -132,8 +133,8 @@ export default {
         setTimeout(this.initPulldown, 600)
       }
 
-      if (distance <= this.loadDistance && !this.isLoadingMore) {
-        this.isLoadingMore = true
+      if (distance <= this.loadDistance && !this.isLoading) {
+        this.$emit('update:isLoading', true)
         this.$emit('load')
       }
     }
@@ -142,15 +143,6 @@ export default {
   mounted () {
     // disable pulldown to refresh if the refreshDistance is 0.
     if (this.refreshDistance > 0) this.initPulldown()
-  },
-
-  watch: {
-    isLoading (newVal) {
-      if (!newVal) {
-        this.isLoadingLatest = false
-        this.isLoadingMore = false
-      }
-    }
   }
 }
 </script>

@@ -8,13 +8,13 @@ import { Toast } from 'mint-ui'
 
 Vue.prototype.axios = axios
 /* ------------------------------ base url config ------------------------------ */
-const baseURL = 'http://192.168.0.3:9527/mobile-server'
-Vue.prototype.host = 'http://192.168.0.3:9527/'
+const baseURL = 'http://172.20.10.4:9527/mobile-server'
+Vue.prototype.host = 'http://172.20.10.4:9527/'
 axios.defaults.baseURL = baseURL
 
 /* ------------------------------ handle response error msg ------------------------------ */
 axios.interceptors.response.use(function (response) {
-  if (response.data.code === 0) {
+  if (response.data.code !== 0) {
     Toast(response.data.msg)
   }
   return response

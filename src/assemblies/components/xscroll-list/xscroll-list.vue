@@ -71,7 +71,7 @@ export default {
       if (Math.abs(centerDiff - curentScrollLeft) < 10) return
 
       // move the scroll bar with animation.
-      tween({x: curentScrollLeft}, {x: centerDiff}, 150, function (update) {
+      tween({x: curentScrollLeft}, {x: centerDiff}, 480, function (update) {
         listBody.scrollLeft = update.x
       })
     },

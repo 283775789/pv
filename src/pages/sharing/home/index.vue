@@ -6,10 +6,9 @@
         class="pv-nav"
         :list="categories"
         :activeIndex="activeCategoryIndex"
-        @change="changeCategoryNav">
+        @change="changeNav">
         <a class="pv-nav-link"
-           slot-scope="scope"
-           @click="getArticals">
+           slot-scope="scope">
            {{scope.item.dictname}}
         </a>
       </pv-xscroll-list>
@@ -19,12 +18,20 @@
       <div class="pv-body-inner xnav">
         <div class="pv-swiper swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <pv-scroller class="xswiper" :isLoading="isLoading">
+                <div class="swiper-slide"
+                  v-for="category in categories"
+                  :key="category.dictvalue">
+                  <pv-scroller
+                    class="xswiper"
+                    :isLoading.sync="isLoading"
+                    @refresh="getArticals('refresh')"
+                    @load="getArticals('load')">
+                    {{category.dictname}}
+                    <br>
                     <!-- artical list -->
                     <ul class="pv-card">
                       <li class="pv-introl"
-                        v-for="artical in categories.articals"
+                        v-for="artical in category.articals"
                         :key="artical.aid"
                         @click="$router.push('/artical-detail')">
                         <div class="pv-introl-body">
@@ -60,15 +67,6 @@
                     <!-- /artical list -->
                   </pv-scroller>
                 </div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
-                <div class="swiper-slide">Slide 4</div>
-                <div class="swiper-slide">Slide 5</div>
-                <div class="swiper-slide">Slide 6</div>
-                <div class="swiper-slide">Slide 7</div>
-                <div class="swiper-slide">Slide 8</div>
-                <div class="swiper-slide">Slide 9</div>
-                <div class="swiper-slide">Slide 10</div>
             </div>
         </div>
       </div>
@@ -91,6 +89,14 @@ export default {
   },
 
   methods: {
+    initSwiper () {
+      this.swiper = new window.Swiper('.swiper-container', {
+        on: {
+          slideChange: this.slidePage
+        }
+      })
+    },
+
     // get the list of all categories
     getCategories () {
       const vm = this
@@ -108,48 +114,72 @@ export default {
               articals: []
             }
           })
+
+          vm.$nextTick(() => {
+            vm.initSwiper()
+          })
+
+          vm.getArticals('nav')
         }
       }).catch(function (error) {
         console.log(error)
       })
     },
 
-    getArticals () {
-      const vm = this
+    /**
+     *  @param {String} type
+     * 'nav':click a navigation or slide a swiper
+     * 'load': scroll the page
+     * 'refresh': pulldown the page
+     */
+    getArticals (type) {
       const activeCategory = this.categories[this.activeCategoryIndex]
 
-      vm.axios.post('/article/page', {
-        category: activeCategory.dictvalue,
-        pageno: activeCategory.pageno,
-        pagesize: activeCategory.pagesize
-      }).then(function (response) {
+      // return directly, if the artical list is not empty.
+      if (type === 'nav' && activeCategory.articals.length > 0) return
+
+      if (type === 'load') {
+        // return directly, when it is the last page.
+        if (activeCategory.pageno >= activeCategory.totalpage) {
+          this.isLoading = false
+          return
+        }
+
+        activeCategory.pageno++
+      }
+
+      const vm = this
+      const queryParams = `?category=${activeCategory.dictvalue}&pageno=${activeCategory.pageno}&pagesize=${activeCategory.pagesize}`
+      vm.axios.post(`/article/page${queryParams}`).then(function (response) {
         if (response.data.code === 0) {
-          debugger
+          if (type === 'refresh') {
+
+          } else if (type === 'load') {
+
+          } else {
+            activeCategory.articals = response.data.data.list
+          }
+
+          vm.isLoading = false
         }
       }).catch(function (error) {
+        vm.isLoading = false
         console.log(error)
       })
     },
 
-    changeCategoryNav (navIndex) {
+    changeNav (navIndex) {
       this.swiper.slideTo(navIndex)
     },
 
-    changeCategoryPage () {
+    slidePage () {
       this.activeCategoryIndex = this.swiper.activeIndex
+      this.getArticals('nav')
     }
   },
 
-  created () {
-    this.getCategories()
-  },
-
   mounted () {
-    this.swiper = new window.Swiper('.swiper-container', {
-      on: {
-        slideChange: this.changeCategoryPage
-      }
-    })
+    this.getCategories()
   }
 }
 </script>
