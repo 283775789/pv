@@ -45,7 +45,7 @@ const setStatusBarColor = function (color) {
  * @param {String} url share url
  * @param {String} iconUrl share icon url
  * @param {String} title share title
- * @param {String} desc share title
+ * @param {String} desc share description
  */
 const share = function (type, url, iconUrl, title, desc) {
   if (pad) {
