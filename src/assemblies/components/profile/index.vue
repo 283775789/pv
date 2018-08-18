@@ -25,8 +25,8 @@
       <div class="pv-card-title">
         <div class="pv-flex">
           <div class="pv-flex-item xfull">
-            <span class="TEXT_LARGE TEXT_BOLD COLOR_PRICE">余额: {{userData.balance || 0}}元</span>
-            <span class="COLOR_SECONDARY">(总收入:{{userData.income || 0}}元)</span>
+            <span class="TEXT_LARGE TEXT_BOLD COLOR_PRICE">余额: {{userData.balance|liToYuan}}元</span>
+            <span class="COLOR_SECONDARY">(总收入:{{userData.income|liToYuan}}元)</span>
           </div>
           <div class="pv-flex-item TEXT_RIGHT">
             <router-link
@@ -41,19 +41,19 @@
         <div class="pv-flex xavg"
           :class="{xseparator: separator}">
           <div class="pv-flex-item">
-            <div class="TEXT_LARGE TEXT_BOLD">{{userData.todayincome || 0}}</div>
+            <div class="TEXT_LARGE TEXT_BOLD">{{userData.todayincome|liToYuan}}</div>
             <div class="COLOR_WEAKING">今日收入</div>
           </div>
           <div class="pv-flex-item">
-            <div class="TEXT_LARGE TEXT_BOLD">{{userData.todayinvite || 0}}</div>
+            <div class="TEXT_LARGE TEXT_BOLD">{{userData.todayinvite|liToYuan}}</div>
             <div class="COLOR_WEAKING">今日收徒</div>
           </div>
           <div class="pv-flex-item">
-            <div class="TEXT_LARGE TEXT_BOLD">{{userData.stucount || 0}}</div>
+            <div class="TEXT_LARGE TEXT_BOLD">{{userData.stucount|liToYuan}}</div>
             <div class="COLOR_WEAKING">我的徒弟</div>
           </div>
           <div class="pv-flex-item">
-            <div class="TEXT_LARGE TEXT_BOLD">{{userData.studivide || 0}}</div>
+            <div class="TEXT_LARGE TEXT_BOLD">{{userData.studivide|liToYuan}}</div>
             <div class="COLOR_WEAKING">徒弟分成</div>
           </div>
         </div>
@@ -74,10 +74,35 @@ export default {
     }
   },
 
-  computed: {
-    userData () {
-      return this.$store.state.userData
+  data () {
+    return {
+      userData: {}
     }
+  },
+
+  methods: {
+    getProfile () {
+      const storeUserData = this.$store.state.userData
+
+      if (storeUserData) {
+        this.userData = storeUserData
+        return
+      }
+
+      const vm = this
+      this.axios.post('/personal/profile').then(function (response) {
+        if (response.data.code === 0) {
+          vm.userData = response.data.data
+          vm.$store.commit('updateUserData', response.data.data)
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
+  },
+
+  created () {
+    this.getProfile()
   }
 }
 </script>

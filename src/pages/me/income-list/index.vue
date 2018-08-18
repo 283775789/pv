@@ -56,15 +56,73 @@ import Profile from '@comps/profile'
 export default {
   name: 'me-income-list',
 
+  data () {
+    return {
+      activeTabIndex: 0,
+      isLoading: false,
+      readingIncome: {
+        pageno: 1,
+        pagesize: 10,
+        list: []
+      },
+      otherIncome: {
+        pageno: 1,
+        pagesize: 10,
+        list: []
+      }
+    }
+  },
+
   components: {
     'pv-profile': Profile
   },
 
-  data () {
-    return {
-      activeTabIndex: 0,
-      isLoading: false
+  methods: {
+    /**
+     * @param {String} type 1-reading income 2-other income
+     * @param {Boolean} isLoadMore equal to true when the load event is triggered by the scroller
+     */
+    getIncomeDetail (type, isLoadMore) {
+      /* eslint-disable no-unused-vars */
+      let requestParams
+      let incomeList
+
+      if (type === 1) {
+        if (isLoadMore) this.readingIncome.pageno++
+        requestParams = {
+          type,
+          pageno: this.readingIncome.pageno,
+          pagesize: this.readingIncome.pagesize
+        }
+        incomeList = this.readingIncome.list
+      } else if (type === 2) {
+        if (isLoadMore) this.otherIncome.pageno++
+        requestParams = {
+          type,
+          pageno: this.otherIncome.pageno,
+          pagesize: this.otherIncome.pagesize
+        }
+        incomeList = this.readingIncome.list
+      }
+
+      requestParams = this.qs.stringify(requestParams)
+
+      this.axios.post('/income/detail/page', requestParams).then(function (response) {
+        if (response.data.code === 0) {
+          if (isLoadMore) {
+
+          } else {
+            incomeList = response.data.data.list
+          }
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
     }
+  },
+
+  created () {
+    this.getIncomeDetail(1)
   }
 }
 </script>

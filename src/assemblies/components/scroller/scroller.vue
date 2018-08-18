@@ -77,10 +77,10 @@ export default {
 
     setPulldownStyle (value) {
       const scrollerInner = this.$refs.inner
-
-      if (!scrollerInner) return
-
       const topLoadingIcon = this.$refs['top-loading']
+
+      if (!scrollerInner || !topLoadingIcon) return
+
       scrollerInner.style.webkitTransform = `translateY(${value}px)`
       scrollerInner.style.transform = `translateY(${value}px)`
       topLoadingIcon.style.webkitTransform = `scale(${1 + value / (this.refreshDistance * 6)})`
