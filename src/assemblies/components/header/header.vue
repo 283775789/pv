@@ -15,8 +15,16 @@
 </template>
 
 <script>
+import rgbToHex from '@utils/rgbToHex'
 
 export default {
-  name: 'pv-header'
+  name: 'pv-header',
+
+  mounted () {
+    // pass the header background color to pad
+    const rootStyle = window.getComputedStyle(this.$el)
+    const color = rgbToHex(rootStyle.backgroundColor)
+    this.pad.setStatusBarColor.call(this, color)
+  }
 }
 </script>

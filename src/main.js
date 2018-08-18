@@ -1,9 +1,11 @@
 // import library and config
+import pad from '@/config/pad'
 import Vue from 'vue'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import '@/config/api'
-import '@/config/components'
+import '@comps'
+import '@filters'
 import App from '@/App'
 import router from '@/config/router'
 import store from '@/config/store'
@@ -12,6 +14,8 @@ import Swiper from 'swiper/dist/js/swiper.js'
 
 window.Swiper = Swiper
 Vue.use(Mint)
+
+Vue.prototype.pad = pad
 
 // create the vue root instance
 new Vue({

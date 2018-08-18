@@ -39,12 +39,13 @@ export default new Router({
       path: '/',
       component: Home,
       meta: {
+        keepAlive: true,
         title: '来米资讯',
         level: 1
       }
     },
     {
-      path: '/artical-detail',
+      path: '/artical-detail/:aid',
       component: ArticalDetail,
       meta: {
         title: '高价文',

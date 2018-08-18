@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  name: 'pv-page-me-withdrew-list'
+  name: 'me-withdrew-list'
 }
 </script>

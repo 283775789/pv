@@ -2,7 +2,7 @@
   <div class="pv-profile">
     <!-- user -->
     <div class="pv-user">
-      <img class="pv-user-avatar" src="">
+      <img class="pv-user-avatar" :src="userData.headimg">
       <ul class="pv-user-body">
         <li>
           <div class="pv-user-label">用户名</div>

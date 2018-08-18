@@ -9,7 +9,12 @@ export default {
   name: 'pv-back',
   methods: {
     back () {
-      this.$router.back()
+      // 从web页面返回到pad页面
+      if (this.$route.path === '/') {
+        this.pad.backToPad()
+      } else {
+        this.$router.back()
+      }
     }
   }
 }

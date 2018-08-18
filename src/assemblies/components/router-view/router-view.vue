@@ -6,13 +6,17 @@
     :leave-active-class="'pv-slider ' + direction"
     leave-class="xleave-from"
     leave-to-class="xleave-to">
-    <router-view />
+    <keep-alive :include="include" :exclude="exclude">
+      <router-view />
+    </keep-alive>
   </transition>
 </template>
 
 <script>
 export default {
   name: 'pv-router-view',
+
+  props: ['include', 'exclude'],
 
   data () {
     return {

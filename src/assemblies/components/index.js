@@ -8,7 +8,7 @@ import RouterView from '@comps/router-view/router-view'
 import Scroller from '@comps/scroller/scroller'
 import Ghost from '@comps/ghost'
 
-const components = [
+let components = [
   Header,
   XScrollList,
   Back,

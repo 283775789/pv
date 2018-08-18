@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'pv-page-me-service'
+  name: 'me-service'
 }
 </script>
 

@@ -72,10 +72,26 @@
 import Profile from '@comps/profile'
 
 export default {
-  name: 'pv-page-me-home',
+  name: 'me-home',
 
   components: {
     'pv-profile': Profile
+  },
+
+  methods: {
+    getProfile () {
+      this.axios.post('/personal/profile').then(function (response) {
+        if (response.data.code === 0) {
+          this.$store.commit('updateUserData', response.data.data)
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
+  },
+
+  created () {
+    this.getProfile()
   }
 }
 </script>

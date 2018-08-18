@@ -1,21 +1,28 @@
 <template>
   <div class="pv-body xheader" id="me-income-list">
-    <pv-profile class="MB_SMAlL" separator />
+    <pv-profile class="MB_TINY" separator />
 
     <!-- tab -->
     <pv-xscroll-list
       class="xseparator pv-nav xtab"
-      :number="3">
-      <a class="pv-nav-link" slot-scope="scope">{{tabs[scope.index-1]}}</a>
+      :list="['阅读收入', '其他收入', '收徒明细']"
+      :activeIndex="activeTabIndex">
+      <a class="pv-nav-link" slot-scope="scope">{{scope.item}}</a>
     </pv-xscroll-list>
     <!-- /tab -->
 
     <!-- swiper -->
-      <div class="pv-body-inner BG_WHITE" style="top:9.75rem;">
+      <div class="pv-body-inner BG_WHITE" style="top:9.48rem;">
         <div class="pv-swiper swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <pv-scroller class="xswiper" :isLoading="isLoading">
+                  <pv-scroller
+                    class="xswiper"
+                    v-for="n in 3"
+                    :key="n"
+                    :uid="n"
+                    :refreshDistance='0'
+                    :isLoading="isLoading">
                     <!-- income list -->
                     <ul class="pv-card">
                       <li class="pv-flexrow xsavespacing">
@@ -47,7 +54,7 @@
 import Profile from '@comps/profile'
 
 export default {
-  name: 'pv-page-me-income-list',
+  name: 'me-income-list',
 
   components: {
     'pv-profile': Profile
@@ -55,7 +62,8 @@ export default {
 
   data () {
     return {
-      tabs: ['阅读收入', '其他收入', '收徒明细']
+      activeTabIndex: 0,
+      isLoading: false
     }
   }
 }

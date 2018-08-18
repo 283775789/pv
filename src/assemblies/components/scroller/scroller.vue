@@ -4,12 +4,12 @@
        <div ref="top-loading"
             v-if="refreshDistance > 0"
             class="pv-scroller-loading xlatest"
-            :class="{xloading: this.isLoading }">
+            :class="{xloading: isLoading }">
             <i class="pv-font xloading"
-              :class="{'ROTATING': this.isLoading}">
+              :class="{'ROTATING': isLoading}">
             </i>
             <slot name="loading-latest-text">
-              <span>{{this.isLoading ? '更新中...' : "下拉更新"}}</span>
+              <span>{{isLoading ? '更新中...' : "下拉更新"}}</span>
             </slot>
        </div>
        <div ref="inner"
@@ -44,6 +44,10 @@ export default {
     isLoading: {
       type: Boolean,
       required: true
+    },
+    uid: {
+      type: [Number, String],
+      required: true
     }
   },
 
@@ -73,6 +77,9 @@ export default {
 
     setPulldownStyle (value) {
       const scrollerInner = this.$refs.inner
+
+      if (!scrollerInner) return
+
       const topLoadingIcon = this.$refs['top-loading']
       scrollerInner.style.webkitTransform = `translateY(${value}px)`
       scrollerInner.style.transform = `translateY(${value}px)`
@@ -137,12 +144,29 @@ export default {
         this.$emit('update:isLoading', true)
         this.$emit('load')
       }
+
+      // save scroll postion
+      window.sessionStorage.setItem(`${this.uid}`, JSON.stringify({scrollTop, path: this.$route.path}))
     }
   },
 
   mounted () {
     // disable pulldown to refresh if the refreshDistance is 0.
     if (this.refreshDistance > 0) this.initPulldown()
+  },
+
+  watch: {
+    $route (to, from) {
+      // scroll to the last postion
+      let scrollSession = window.sessionStorage.getItem(`${this.uid}`)
+
+      if (scrollSession) {
+        scrollSession = JSON.parse(scrollSession)
+        if (to.path === scrollSession.path) {
+          this.$el.scrollTop = scrollSession.scrollTop
+        }
+      }
+    }
   }
 }
 </script>

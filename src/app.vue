@@ -11,7 +11,7 @@
     <!-- /header -->
 
     <!-- content -->
-    <pv-router-view />
+    <pv-router-view include="sharing-home" />
     <!-- /content -->
 
     <!-- footer -->

@@ -45,7 +45,7 @@
 import Profile from '@comps/profile'
 
 export default {
-  name: 'pv-page-me-ranking-list',
+  name: 'me-ranking-list',
 
   components: {
     'pv-profile': Profile

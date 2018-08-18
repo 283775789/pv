@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  name: 'pv-page-me-withdraw',
+  name: 'me-withdraw',
 
   data () {
     return {
