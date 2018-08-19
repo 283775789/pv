@@ -51,11 +51,12 @@ npm run dev
 npm run build
 
 ```
+
 注:
 
 1. 不要忘记删除开发环境中配置的临时cookie【WZ_TOKEN】
 
-2. api.js中的
+2. 修改api.js中的接口url为api服务器真实的url地址
 
 
 # 代码框架
