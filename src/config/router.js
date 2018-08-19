@@ -1,21 +1,21 @@
 /**
- * 页面路由，路由元信息说明:
- * title: 页面的标题内容，显示在页面头部中间的文字
- * level: 标识是1级页面还是2级页面，依此内推，不同级页面间切换有滑过动效
+ * routing meta information:
+ * title: The title content of the page, it is displayed in the middle of the header.
+ * level: Indicates the level of the page and the effect of sliding when the page is changed.
  */
 
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// 分享
+// share
 import Home from '@pages/sharing/home'
 import ArticalDetail from '@pages/sharing/article-detail'
 
-// 收徒
+// follower
 import Student from '@pages/student/home'
 import Invite from '@pages/student/invite'
 
-// 个人中心
+// me
 import Me from '@pages/me/home'
 import IncomeList from '@pages/me/income-list'
 import Withdraw from '@pages/me/withdraw'
@@ -33,7 +33,7 @@ export default new Router({
   linkActiveClass: 'xactive',
   linkExactActiveClass: 'xcurrent',
   routes: [
-    // 路由:分享
+    // routes:share
     // --------------------------------------------------
     {
       path: '/',
@@ -52,7 +52,7 @@ export default new Router({
         level: 2
       }
     },
-    // 路由:收徒
+    // routes:follower
     // --------------------------------------------------
     {
       path: '/student',
@@ -69,7 +69,7 @@ export default new Router({
         level: 2
       }
     },
-    // 路由:个人中心
+    // routes:me
     // --------------------------------------------------
     {
       path: '/me',

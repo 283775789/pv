@@ -26,6 +26,11 @@ $border-btn-border-color: $color-border-button !default; // 主按钮边框颜�
   border-radius: $btn-height / 2;
 }
 
+.pv-btn.xdisabled {
+  pointer-events: none;
+  opacity: .45;
+}
+
 // 按钮: 主要
 .pv-btn.xmain {
   color: $main-btn-color;

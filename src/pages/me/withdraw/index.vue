@@ -3,40 +3,35 @@
     <div class="pv-card MB_SMAlL">
       <!-- avatar -->
       <div class="BORDER_BOTTOM PY_LARGE TEXT_CENTER">
-        <img class="pv-avatar xlarge MB_SMAlL" />
+        <img class="pv-avatar xlarge MB_SMAlL" :src="userData.headimg" />
         <div class="COLOR_WEAKING">可提现金额</div>
-        <em class="TEXT_HUGE">￥589</em>
+        <em class="TEXT_HUGE">￥{{userData.balance|liToYuan}}</em>
       </div>
       <!-- /avatar -->
 
       <!-- withdraw info -->
       <div class="pv-flexrow TEXT_MEDIUM">
-        <div class="pv-flexrow-cell">微信昵称：王娜娜</div>
+        <div class="pv-flexrow-cell">{{userData.nickname}}</div>
       </div>
       <div class="pv-flexrow TEXT_MEDIUM">
-        <div class="pv-flexrow-cell">提现金额：10</div>
+        <div class="pv-flexrow-cell">提现金额：{{amount}}</div>
       </div>
       <div class="pv-flexrow xavg">
-        <div class="pv-flexrow-cell">
-          <a class="pv-btn xsmall xsecondary">
-            <span>￥10</span>
-            <i class="pv-tip xtop">秒到账</i>
-          </a>
-        </div>
-        <div class="pv-flexrow-cell">
-          <a class="pv-btn xsmall xborder">￥20</a>
-        </div>
-        <div class="pv-flexrow-cell">
-          <a class="pv-btn xsmall xborder">￥50</a>
-        </div>
-        <div class="pv-flexrow-cell">
-          <a class="pv-btn xsmall xborder">￥100</a>
+        <div class="pv-flexrow-cell"
+             v-for="value in moneyOptions"
+             :key="value">
+             <a class="pv-btn xsmall"
+              :class="[amount === value ? 'xsecondary':'xborder']"
+              @click="amount=value">
+              <span>￥{{value}}</span>
+              <i v-if="value===10" class="pv-tip xtop">秒到账</i>
+            </a>
         </div>
       </div>
       <!-- /withdraw info -->
     </div>
 
-    <a class="pv-btn xmain xfull">确&nbsp;&nbsp;定</a>
+    <a class="pv-btn xmain xfull" @click="withdraw">确&nbsp;&nbsp;定</a>
 
     <!-- withdraw explain -->
     <div class="pv-note">
@@ -68,16 +63,35 @@
 </template>
 
 <script>
+import profile from '@mixins/profile'
+
 export default {
   name: 'me-withdraw',
 
   data () {
     return {
+      amount: 10,
+      moneyOptions: [10, 20, 50, 100],
       weixin: {
         visibale: false
       }
     }
   },
+
+  methods: {
+    withdraw () {
+      this.axios.post(`/withdraw/apply?amount=${this.amount * 1000}`).then(function (respose) {
+        if (respose.data.code === 0) {
+          debugger
+          // withdrawal success msg
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
+  },
+
+  mixins: [profile],
 
   watch: {
     $route (to, from) {

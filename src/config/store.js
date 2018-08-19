@@ -5,11 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // 保存用户个人信息
+    // store user profile
     userData: null
   },
   mutations: {
-    // 更新用户个人信息
+    // update user profile
     updateUserData (state, userData) {
       state.userData = Object.assign({}, userData)
     }

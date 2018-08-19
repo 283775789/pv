@@ -68,6 +68,7 @@ export default {
       categories: [
         {
           type: '阅读收入',
+          requestUrl: '/income/detail/page',
           isLoading: false,
           pageno: 1,
           pagesize: 10,
@@ -75,6 +76,7 @@ export default {
         },
         {
           type: '其他收入',
+          requestUrl: '/income/detail/page',
           isLoading: false,
           pageno: 1,
           pagesize: 10,
@@ -82,6 +84,7 @@ export default {
         },
         {
           type: '收徒明细',
+          requestUrl: '/student/detail/page',
           isLoading: false,
           pageno: 1,
           pagesize: 10,
@@ -97,87 +100,46 @@ export default {
 
   methods: {
     /**
-     * action: get the reading income detail or other income detail
-     * @param {String} type 0-reading income 1-other income
+     * action: get the content detail of the current tab page
+     * @param {String} type 0-reading income 1-other income 2-follower list
      * @param {Boolean} isLoadMore true-the load event is triggered by the scroller
      */
-    getIncomeDetail (type, isLoadMore) {
-      let incomeData = this.categories[type]
+    getContentDetail (type, isLoadMore) {
+      let content = this.categories[type]
 
       if (isLoadMore) {
         // return directly if the last page has been loaded.
-        if (incomeData.pageno >= incomeData.totalpage) {
-          incomeData.isLoading = false
+        if (content.pageno >= content.totalpage) {
+          content.isLoading = false
           return
         }
 
-        incomeData.pageno++
+        content.pageno++
       } else {
-        if (incomeData.list.length > 0) return
+        if (content.list.length > 0) return
       }
 
-      const requestParams = this.qs.stringify({
-        type,
-        pageno: incomeData.pageno,
-        pagesize: incomeData.pagesize
-      })
+      let requestParams = {
+        pageno: content.pageno,
+        pagesize: content.pagesize
+      }
 
-      this.axios.post('/income/detail/page', requestParams).then(function (response) {
+      if (type < 2) requestParams.type = type
+
+      this.axios.post(content.requestUrl, this.qs.stringify(requestParams)).then(function (response) {
         if (response.data.code === 0) {
           if (isLoadMore) {
-            incomeData.list = incomeData.list.concat(response.data.data.list)
+            content.list = content.list.concat(response.data.data.list)
           } else {
-            incomeData.totalsize = response.data.data.totalsize
-            incomeData.totalpage = response.data.data.totalpage
-            incomeData.list = response.data.data.list
+            content.totalsize = response.data.data.totalsize
+            content.totalpage = response.data.data.totalpage
+            content.list = response.data.data.list
           }
         }
 
-        incomeData.isLoading = false
+        content.isLoading = false
       }).catch(function (error) {
-        incomeData.isLoading = false
-        console.log(error)
-      })
-    },
-
-    /**
-     * action: get the folloer list
-     * @param {Boolean} isLoadMore true-the load event is triggered by the scroller
-     */
-    getFollowers (isLoadMore) {
-      const followerData = this.categories[2]
-
-      if (isLoadMore) {
-        // return directly if the last page has been loaded.
-        if (followerData.pageno >= followerData.totalpage) {
-          followerData.isLoading = false
-          return
-        }
-
-        followerData.pageno++
-      } else {
-        if (followerData.list.length > 0) return
-      }
-
-      const requestParams = this.qs.stringify({
-        pageno: followerData.pageno,
-        pagesize: followerData.pagesize
-      })
-
-      this.axios.post('/student/detail/page', requestParams).then(function (response) {
-        if (response.data.code === 0) {
-          if (isLoadMore) {
-            followerData.list = followerData.list.concat(response.data.data.list)
-          } else {
-            followerData.totalsize = response.data.data.totalsize
-            followerData.totalpage = response.data.data.totalpage
-            followerData.list = response.data.data.list
-          }
-
-          followerData.isLoading = false
-        }
-      }).catch(function (error) {
-        followerData.isLoading = false
+        content.isLoading = false
         console.log(error)
       })
     },
@@ -196,17 +158,12 @@ export default {
 
     slidePage () {
       this.activeTabIndex = this.swiper.activeIndex
-
-      if (this.activeTabIndex < 2) {
-        this.getIncomeDetail(this.activeTabIndex)
-      } else {
-        this.getFollowers()
-      }
+      this.getContentDetail(this.activeTabIndex)
     }
   },
 
   created () {
-    this.getIncomeDetail(0)
+    this.getContentDetail(0)
   },
 
   mounted () {

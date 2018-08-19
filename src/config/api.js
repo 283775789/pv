@@ -10,8 +10,8 @@ Vue.prototype.qs = require('qs')
 Vue.prototype.axios = axios
 
 /* ------------------------------ base url config ------------------------------ */
-const baseURL = 'http://192.168.115.247:9527/mobile-server'
-Vue.prototype.host = 'http://192.168.115.247:9527/'
+const baseURL = 'http://192.168.0.3:9527/mobile-server'
+Vue.prototype.host = 'http://192.168.0.3:9527/'
 axios.defaults.baseURL = baseURL
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 

@@ -22,7 +22,7 @@
                 :key="category.dictvalue">
                 <pv-scroller
                   class="xswiper"
-                  :isLoading.sync="isLoading"
+                  :isLoading.sync="category.isLoading"
                   :uid="category.dictvalue"
                   @refresh="getArticals('refresh')"
                   @load="getArticals('load')">
@@ -85,7 +85,6 @@ export default {
   data () {
     return {
       swiper: null,
-      isLoading: false,
       categories: [],
       activeCategoryIndex: 0
     }
@@ -108,7 +107,7 @@ export default {
         if (response.data.code === 0) {
           // extend each category object to be get the artical list conveniently.
           vm.categories = response.data.data.map((item) => {
-            return {...item, pageno: 1, pagesize: 10, totalsize: 0, totalpage: 0, articals: []}
+            return {...item, isLoading: false, pageno: 1, pagesize: 10, totalsize: 0, totalpage: 0, articals: []}
           })
 
           vm.$nextTick(() => {

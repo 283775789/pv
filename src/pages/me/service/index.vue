@@ -6,23 +6,23 @@
         <div class="pv-form xservice xreadonly">
           <div class="pv-form-row">
             <label class="pv-form-label">工作时间：</label>
-            <div class="pv-form-body">周一至周五10：00~18：00</div>
+            <div class="pv-form-body">{{service.srvtime}}</div>
           </div>
           <div class="pv-form-row">
             <label class="pv-form-label">客服QQ：</label>
-            <div class="pv-form-body">3380173429</div>
+            <div class="pv-form-body">{{service.srvqq}}</div>
           </div>
           <div class="pv-form-row">
             <label class="pv-form-label">客服微信：</label>
-            <div class="pv-form-body">LM9712S（问题咨询）</div>
+            <div class="pv-form-body">{{service.srvwechat}}（问题咨询）</div>
           </div>
           <div class="pv-form-row">
             <label class="pv-form-label">VIP客服微信：</label>
-            <div class="pv-form-body">zdqlvip（收徒20人以上）</div>
+            <div class="pv-form-body">{{service.srvwechat}}（收徒20人以上）</div>
           </div>
           <div class="pv-form-row">
             <label class="pv-form-label">商务QQ：</label>
-            <div class="pv-form-body">928901973（不咨询问题）</div>
+            <div class="pv-form-body">{{service.bizqq}}（不咨询问题）</div>
           </div>
         </div>
       </div>
@@ -32,7 +32,30 @@
 
 <script>
 export default {
-  name: 'me-service'
+  name: 'me-service',
+
+  data () {
+    return {
+      service: null
+    }
+  },
+
+  methods: {
+    getServiceInfo () {
+      const vm = this
+      this.axios.post('/customsrv/info').then(function (response) {
+        if (response.data.code === 0) {
+          vm.service = response.data.data
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
+  },
+
+  created () {
+    this.getServiceInfo()
+  }
 }
 </script>
 
