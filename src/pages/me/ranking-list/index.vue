@@ -4,9 +4,11 @@
 
     <!-- tab -->
     <pv-xscroll-list
-      class="xseparator pv-nav xtab"
-      :number="2">
-      <a class="pv-nav-link" slot-scope="scope">{{tabs[scope.index-1]}}</a>
+      class="xseparator pv-nav xtab x2"
+      :list="categories"
+      :activeIndex="activeTabIndex"
+      @change="changeTab">
+      <a class="pv-nav-link" slot-scope="scope">{{scope.item.type}}</a>
     </pv-xscroll-list>
     <!-- /tab -->
 
@@ -14,26 +16,34 @@
       <div class="pv-body-inner BG_WHITE" style="top:7.2rem;">
         <div class="pv-swiper swiper-container">
           <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <pv-scroller class="xswiper" :isLoading="isLoading">
+              <div class="swiper-slide"
+                  v-for="(category, index) in categories"
+                  :key="index">
+                  <pv-scroller
+                    class="xswiper"
+                    :uid="index"
+                    :refreshDistance='0'
+                    :isLoading.sync="category.isLoading">
                   <!-- list -->
                   <ul class="pv-card">
-                    <li class="pv-flexrow xsavespacing">
+                    <li class="pv-flexrow xsavespacing"
+                      v-for="(item,index) in category.list"
+                      :key="item.uid">
                       <div class="pv-flexrow-cell xfull">
-                        <i class="pv-ico xno1"></i>
-                        <img class="pv-avatar" src="" />
-                        <span class="TEXT_MEDIUM">李晓晓</span>
+                        <i v-if="index<3" class="pv-ico" :class="[`xno${index+1}`]"></i>
+                        <i v-else class="pv-no"><span>{{index}}</span></i>
+                        <img class="pv-avatar ML_SMALL" :src="item.headimg" />
+                        <span class="TEXT_MEDIUM">{{item.nickname}}</span>
                       </div>
                       <div class="pv-flexrow-cell FLEX1">
-                        <span class="TEXT_MEDIUM COLOR_PRICE">100元</span>
+                        <span v-if="activeTabIndex === 0" class="TEXT_MEDIUM COLOR_PRICE">{{item.income|liToYuan}}元</span>
+                        <span v-else class="TEXT_MEDIUM COLOR_PRICE">{{item.invite}}个</span>
                       </div>
                     </li>
                   </ul>
                   <!-- /list -->
                 </pv-scroller>
               </div>
-              <div class="swiper-slide">Slide 2</div>
-              <div class="swiper-slide">Slide 3</div>
           </div>
       </div>
     </div>
@@ -53,8 +63,70 @@ export default {
 
   data () {
     return {
-      tabs: ['收入排名', '收徒排名']
+      activeTabIndex: 0,
+      categories: [
+        {
+          type: '收入排名',
+          apiUrl: '/top/income/list',
+          isLoading: false,
+          list: []
+        },
+        {
+          type: '收徒排名',
+          apiUrl: '/top/invite/list',
+          isLoading: false,
+          list: []
+        }
+      ]
     }
+  },
+
+  methods: {
+    /**
+     * action: get ranking list
+     * @param {String} type 0-income ranking 1-follower ranking
+     */
+    getRanking (type) {
+      const ranking = this.categories[type]
+
+      if (ranking.list.length > 0) return
+
+      this.axios.post(ranking.apiUrl).then(function (response) {
+        if (response.data.code === 0) {
+          ranking.list = response.data.data
+        }
+        ranking.isLoading = false
+      }).catch(function (error) {
+        ranking.isLoading = false
+        console.log(error)
+      })
+    },
+
+    initSwiper () {
+      this.swiper = new window.Swiper('.swiper-container', {
+        on: {
+          slideChange: this.slidePage
+        }
+      })
+    },
+
+    changeTab (navIndex) {
+      this.swiper.slideTo(navIndex)
+    },
+
+    slidePage () {
+      this.activeTabIndex = this.swiper.activeIndex
+
+      this.getRanking(this.activeTabIndex)
+    }
+  },
+
+  created () {
+    this.getRanking(0)
+  },
+
+  mounted () {
+    this.initSwiper()
   }
 }
 </script>

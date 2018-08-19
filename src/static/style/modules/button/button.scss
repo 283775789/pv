@@ -77,3 +77,8 @@ $border-btn-border-color: $color-border-button !default; // 主按钮边框颜�
 .pv-btnfooter {
   @extend .pv-footer;
 }
+
+// 按钮: 提现
+.pv-btn.xwithdraw {
+  display: none;
+}

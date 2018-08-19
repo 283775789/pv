@@ -48,7 +48,7 @@
     <!-- weixin note -->
     <mt-popup
       style="width: 85%;"
-      v-model="weixin"
+      v-model="weixin.visibale"
       popup-transition="popup-fade">
       <div class="pv-card PY_LARGE TEXT_CENTER">
         <div class="TEXT_LARGE">提现前需要关注微信公众号</div>
@@ -74,8 +74,14 @@ export default {
   data () {
     return {
       weixin: {
-        visibale: true
+        visibale: false
       }
+    }
+  },
+
+  watch: {
+    $route (to, from) {
+
     }
   }
 }

@@ -51,10 +51,11 @@ export default {
 
     // set the offset and width for the marker line.
     setMarkerLineStyle (itemIndex) {
-      const activeItem = this.$refs.item[itemIndex].querySelector(':first-child')
+      const activeItem = this.$refs.item[itemIndex]
+      const activeTarget = activeItem.querySelector(':first-child')
       const markLine = this.$refs['marker-line']
-      markLine.style.width = activeItem.clientWidth + 'px'
-      markLine.style.left = activeItem.offsetLeft + 'px'
+      markLine.style.left = activeItem.offsetLeft + (activeItem.clientWidth - activeTarget.clientWidth) / 2 + 'px'
+      markLine.style.width = activeTarget.clientWidth + 'px'
     },
 
     // scroll the list to the position of the clicked item.

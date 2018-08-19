@@ -57,10 +57,10 @@ $nav-active-line-color: $color-main !default; // 选中项标识线颜色
   border-bottom: .5px solid $nav-border-color;
 }
 
-.pv-nav.xtab > .pv-xsl-body {
-  display: flex;
+.pv-nav.xtab.x2 > .pv-xsl-body > li {
+  width: 50%;
 }
 
-.pv-nav.xtab > .pv-xsl-body > li {
-  flex: 1;
+.pv-nav.xtab.x3 > .pv-xsl-body > li {
+  width: 33.33333%;
 }
