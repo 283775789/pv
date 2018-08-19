@@ -6,12 +6,14 @@ import Vue from 'vue'
 import axios from 'axios'
 import { Toast } from 'mint-ui'
 
+const apiUrl = 'http://192.168.0.3:9527'
+
 Vue.prototype.qs = require('qs')
 Vue.prototype.axios = axios
 
 /* ------------------------------ base url config ------------------------------ */
-const baseURL = 'http://192.168.0.3:9527/mobile-server'
-Vue.prototype.host = 'http://192.168.0.3:9527/'
+const baseURL = `${apiUrl}/mobile-server`
+Vue.prototype.host = apiUrl
 axios.defaults.baseURL = baseURL
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
