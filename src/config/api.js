@@ -6,10 +6,14 @@ import Vue from 'vue'
 import axios from 'axios'
 import { Toast } from 'mint-ui'
 
-const apiUrl = 'http://192.168.0.3:9527'
-
 Vue.prototype.qs = require('qs')
 Vue.prototype.axios = axios
+
+const apiUrl = 'http://192.168.0.3:9527'
+
+// the development enviroment have to set a cookie for get api data
+// product environment: please comment the follow code
+document.cookie = 'WZ_TOKEN=jF/QL/+N1mQYAfWHoYGqn85QH1aOt6HOIqLO46wiTNw=;'
 
 /* ------------------------------ base url config ------------------------------ */
 const baseURL = `${apiUrl}/mobile-server`
@@ -26,7 +30,3 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
   return Promise.reject(error)
 })
-
-// the development enviroment have to set a cookie for get api data
-// product environment comment the follow code
-document.cookie = 'WZ_TOKEN=jF/QL/+N1mQYAfWHoYGqn85QH1aOt6HOIqLO46wiTNw=;'
