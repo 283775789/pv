@@ -42,7 +42,7 @@
   border-bottom: .5px solid $color-border-main;
 }
 
-.pv-flexrow:last-child {
+.pv-flexrow:last-child:not(.xborder) {
   border-bottom: none;
 }
 
@@ -276,13 +276,13 @@
 .pv-bill.xstudent {
   height: 25.875rem;
   margin-top: -1.75rem;
-  background-image: url("/static/images/student-bg.png");
+  background-image: url("~@images/student-bg.png");
 }
 
 .pv-bill.xinvite {
   height: 100%;
   padding-top: 1.35rem;
-  background-image: url("/static/images/invite-bg.png");
+  background-image: url("~@images/invite-bg.png");
 }
 
 .pv-bill.xinvite .pv-btn.xbgyellow {

@@ -113,13 +113,16 @@ export default {
     },
 
     submitForm () {
+      const vm = this
       if (!this.validateForm()) return
 
       // easy from validation
       this.axios.post('/business/apply', this.qs.stringify(this.form)).then(function (response) {
         if (response.data.code === 0) {
-          debugger
-          // success msg
+          Toast('谢谢关注，我们会尽快与您取得联系。')
+          setTimeout(() => {
+            vm.$router.push('/me')
+          }, 600)
         }
       }).catch(function (error) {
         console.log(error)

@@ -48,20 +48,29 @@
     <!-- navigation -->
 
     <!-- withdraw list -->
-    <div class="pv-body-inner xscroll BG_WHITE" style="top: 20rem;">
-      <div class="pv-card">
-        <div class="pv-flexrow">
-          <div class="pv-flexrow-cell">
-            <img class="pv-avatar" src="" />
-          </div>
-          <div class="pv-flexrow-cell">
-            <div class="TEXT_MEDIUM">名字</div>
-            <div class="TEXT_SMALL COLOR_WEAKING">2018-01-01</div>
-          </div>
-          <div class="pv-flexrow-cell FLEX1">
-            <span class="TEXT_MEDIUM">提现100元</span>
-          </div>
-        </div>
+    <div class="pv-body-inner BG_WHITE" style="top: 20rem;">
+      <div class="pv-card" style="height:100%;">
+         <div class="pv-swiper swiper-container" id="me-home-swiper">
+            <div ref="swiperWrapper" class="swiper-wrapper">
+                <div class="swiper-slide"
+                  ref="slide"
+                  v-for="(item,index) in liveWithdrawal"
+                  :key="index">
+                  <div class="pv-flexrow xborder">
+                    <div class="pv-flexrow-cell">
+                      <img class="pv-avatar" :src="item.headimg" />
+                    </div>
+                    <div class="pv-flexrow-cell">
+                      <div class="TEXT_MEDIUM">{{item.nickname}}</div>
+                      <div class="TEXT_SMALL COLOR_WEAKING">{{item.withdrawtime}}</div>
+                    </div>
+                    <div class="pv-flexrow-cell FLEX1">
+                      <span class="TEXT_MEDIUM">提现{{item.withdrawmoney|liToYuan}}元</span>
+                    </div>
+                  </div>
+                </div>
+            </div>
+         </div>
       </div>
     </div>
     <!-- /withdraw list -->
@@ -76,6 +85,44 @@ export default {
 
   components: {
     'pv-profile': Profile
+  },
+
+  data () {
+    return {
+      liveWithdrawal: []
+    }
+  },
+
+  methods: {
+    getLiveWithdrawal () {
+      const vm = this
+      this.axios.post('/carousel/withdraw').then(function (response) {
+        if (response.data.code === 0) {
+          vm.liveWithdrawal = response.data.data
+
+          vm.$nextTick(() => {
+            const swiperHeight = vm.$refs.swiperWrapper.offsetHeight
+            const slideHeight = vm.$refs.slide[0].firstChild.offsetHeight
+
+            vm.swiper = new window.Swiper('#me-home-swiper', {
+              autoplay: {
+                delay: 3000,
+                disableOnInteraction: false
+              },
+              slidesPerView: swiperHeight / slideHeight,
+              loopedSlides: vm.liveWithdrawal.length,
+              direction: 'vertical'
+            })
+          })
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
+  },
+
+  created () {
+    this.getLiveWithdrawal()
   }
 }
 </script>

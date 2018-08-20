@@ -14,7 +14,7 @@
 
     <!-- swiper -->
       <div class="pv-body-inner BG_WHITE" style="top:7.2rem;">
-        <div class="pv-swiper swiper-container">
+        <div class="pv-swiper swiper-container" id="me-ranking-list-swiper">
           <div class="swiper-wrapper">
               <div class="swiper-slide"
                   v-for="(category, index) in categories"
@@ -23,6 +23,7 @@
                     class="xswiper"
                     :uid="index"
                     :refreshDistance='0'
+                    :loadDistance='-1'
                     :isLoading.sync="category.isLoading">
                   <!-- list -->
                   <ul class="pv-card">
@@ -89,7 +90,12 @@ export default {
     getRanking (type) {
       const ranking = this.categories[type]
 
-      if (ranking.list.length > 0) return
+      if (ranking.list.length > 0) {
+        ranking.isLoading = false
+        return
+      }
+
+      debugger
 
       this.axios.post(ranking.apiUrl).then(function (response) {
         if (response.data.code === 0) {
@@ -103,7 +109,7 @@ export default {
     },
 
     initSwiper () {
-      this.swiper = new window.Swiper('.swiper-container', {
+      this.swiper = new window.Swiper('#me-ranking-list-swiper', {
         on: {
           slideChange: this.slidePage
         }

@@ -61,24 +61,7 @@
 
 <script>
 export default {
-  name: 'pv-student-invite',
-
-  data () {
-    return {
-      swiper: null,
-      activityPopup: {
-        visible: false
-      }
-    }
-  },
-
-  mounted () {
-    this.swiper = new window.Swiper('.swiper-container', {
-      autoplay: true,
-      loop: true,
-      direction: 'vertical'
-    })
-  }
+  name: 'pv-student-invite'
 }
 </script>
 

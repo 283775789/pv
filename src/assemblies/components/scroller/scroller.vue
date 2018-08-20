@@ -4,7 +4,7 @@
        <div ref="top-loading"
             v-if="refreshDistance > 0"
             class="pv-scroller-loading xlatest"
-            :class="{xloading: isLoading }">
+            :class="{xloading: isLoading && loadType === 'latest'}">
             <i class="pv-font xloading"
               :class="{'ROTATING': isLoading}">
             </i>
@@ -59,7 +59,7 @@ export default {
         distanceX: 0,
         distanceY: 0
       },
-      loadType: 'latest',
+      loadType: '',
       hasPulldownEvent: false
     }
   },
@@ -130,6 +130,9 @@ export default {
         scroller.removeEventListener('touchmove', this.updatePulldown)
         scroller.removeEventListener('touchend', this.endPulldown)
       }
+
+      // disable scroll to load more data if the loadDistance less than 0
+      if (this.loadDistance < 0) return
 
       const height = scroller.offsetHeight
       const scrollHeight = scroller.scrollHeight

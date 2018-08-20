@@ -1,0 +1,17 @@
+// ---------- 无数据 ----------
+.pv-nodata {
+  position: relative;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.pv-nodata > img {
+  width: 6.75rem;
+  margin-top: $spacing-medium;
+}
+
+.pv-nodata > p {
+  padding: $spacing-tiny;
+  font-size: $font-size-medium;
+  color: $color-text-weaking;
+}

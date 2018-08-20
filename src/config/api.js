@@ -12,7 +12,7 @@ Vue.prototype.axios = axios
 const apiUrl = 'http://192.168.115.247:9527'
 
 // the development enviroment have to set a cookie for get api data
-// product environment: please comment the follow code
+// please comment the follow code in the product environment
 document.cookie = 'WZ_TOKEN=jF/QL/+N1mQYAfWHoYGqn85QH1aOt6HOIqLO46wiTNw=;'
 
 /* ------------------------------ base url config ------------------------------ */

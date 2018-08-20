@@ -24,6 +24,20 @@
   height: 3.7rem;
 }
 
+// 文章简介: 图片容器
+.pv-introl-imgbox {
+  position: relative;
+}
+
+// 文章简介: 视频播放标识
+.pv-introl-imgbox > .xplay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -.6rem;
+  margin-left: -.6rem;
+}
+
 // 文章简介: 图片容器-多图片
 .pv-introl-body > .pv-introl-imgbox {
   display: flex;

@@ -7,6 +7,7 @@ import Slider from '@comps/slider/slider'
 import RouterView from '@comps/router-view/router-view'
 import Scroller from '@comps/scroller/scroller'
 import Ghost from '@comps/ghost'
+import Nodata from '@comps/nodata'
 
 let components = [
   Header,
@@ -15,7 +16,8 @@ let components = [
   Slider,
   RouterView,
   Scroller,
-  Ghost
+  Ghost,
+  Nodata
 ]
 
 components.forEach(function (component) {

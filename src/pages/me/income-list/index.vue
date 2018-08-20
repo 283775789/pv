@@ -16,42 +16,41 @@
     <!-- /tab -->
 
     <!-- swiper -->
-      <div class="pv-body-inner BG_WHITE" style="top:9.48rem;">
-        <div class="pv-swiper swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"
-                  v-for="(category, index) in categories"
-                  :key="index">
-                  <pv-scroller
-                    class="xswiper"
-                    :uid="index"
-                    :refreshDistance='0'
-                    :isLoading.sync="category.isLoading">
-                    <!-- category list -->
-                    <div>{{category.type}}</div>
-                    <ul class="pv-card">
-                      <li class="pv-flexrow xsavespacing"
-                        v-for="item in category.list"
-                        :key="item.pid">
-                        <div class="pv-flexrow-cell" style="width: 40%;">
-                          <div class="TEXT_MEDIUM">{{item.typedesc}}</div>
-                          <div class="TEXT_SMALL COLOR_WEAKING">{{item.createtime|unixTimeToDatetime}}</div>
-                        </div>
-                        <div class="pv-flexrow-cell" style="width: 20%;">
-                          <div class="TEXT_MEDIUM COLOR_PRICE">+{{item.amount|liToYuan}}</div>
-                        </div>
-                        <div class="pv-flexrow-cell FLEX1">
-                          <span class="TEXT_MEDIUM COLOR_PRICE">{{item.afterbalance|liToYuan}}</span>
-                        </div>
-                      </li>
-                    </ul>
-                    <!-- /category list -->
-                  </pv-scroller>
-                </div>
-            </div>
-        </div>
+    <div class="pv-body-inner BG_WHITE" style="top:9.48rem;">
+      <div class="pv-swiper swiper-container" id="me-income-list-swiper">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide"
+                v-for="(category, index) in categories"
+                :key="index">
+                <pv-scroller
+                  class="xswiper"
+                  :uid="index"
+                  :refreshDistance='0'
+                  :isLoading.sync="category.isLoading">
+                  <!-- category list -->
+                  <ul class="pv-card">
+                    <li class="pv-flexrow xsavespacing"
+                      v-for="item in category.list"
+                      :key="item.pid">
+                      <div class="pv-flexrow-cell" style="width: 40%;">
+                        <div class="TEXT_MEDIUM">{{item.typedesc}}</div>
+                        <div class="TEXT_SMALL COLOR_WEAKING">{{item.createtime|unixTimeToDatetime}}</div>
+                      </div>
+                      <div class="pv-flexrow-cell" style="width: 20%;">
+                        <div class="TEXT_MEDIUM COLOR_PRICE">+{{item.amount|liToYuan}}</div>
+                      </div>
+                      <div class="pv-flexrow-cell FLEX1">
+                        <span class="TEXT_MEDIUM COLOR_PRICE">{{item.afterbalance|liToYuan}}</span>
+                      </div>
+                    </li>
+                  </ul>
+                  <!-- /category list -->
+                </pv-scroller>
+              </div>
+          </div>
       </div>
-      <!-- /swiper -->
+    </div>
+    <!-- /swiper -->
   </div>
 </template>
 
@@ -124,7 +123,10 @@ export default {
         pagesize: content.pagesize
       }
 
-      if (type < 2) requestParams.type = type
+      // type convert to api definition
+      // 0-other income 1-reading income
+      if (type === 0) requestParams.type = 1
+      if (type === 1) requestParams.type = 0
 
       this.axios.post(content.requestUrl, this.qs.stringify(requestParams)).then(function (response) {
         if (response.data.code === 0) {
@@ -145,7 +147,7 @@ export default {
     },
 
     initSwiper () {
-      this.swiper = new window.Swiper('.swiper-container', {
+      this.swiper = new window.Swiper('#me-income-list-swiper', {
         on: {
           slideChange: this.slidePage
         }

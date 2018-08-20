@@ -1,7 +1,7 @@
 <template>
   <div class="pv-body xheader" id="me-business">
     <div class="pv-body-inner xscroll xfooter">
-      <img src="/static/images/b-banner.png" style="width:100%; height:7.5rem;" />
+      <img src="@images/b-banner.jpg" style="width:100%; height:7.5rem;" />
       <!-- 平台优势 -->
       <div class="pv-card xpy">
         <div class="pv-title">
@@ -11,7 +11,7 @@
           <div class="pv-flex-item">
             <div class="pv-media">
               <div class="pv-media-imgbox">
-                <img src="/static/images/b-user.png" />
+                <img src="@images/b-user.jpg" />
                 <i class="pv-ico xuser"></i>
               </div>
               <div class="pv-media-body">
@@ -23,7 +23,7 @@
           <div class="pv-flex-item">
             <div class="pv-media">
               <div class="pv-media-imgbox">
-                <img src="/static/images/b-content.png" />
+                <img src="@images/b-content.jpg" />
                 <i class="pv-ico xcontent"></i>
               </div>
               <div class="pv-media-body">
@@ -37,7 +37,7 @@
           <div class="pv-flex-item">
             <div class="pv-media">
               <div class="pv-media-imgbox">
-                <img src="/static/images/b-data.png" />
+                <img src="@images/b-data.jpg" />
                 <i class="pv-ico xdata"></i>
               </div>
               <div class="pv-media-body">
@@ -49,7 +49,7 @@
           <div class="pv-flex-item">
             <div class="pv-media">
               <div class="pv-media-imgbox">
-                <img src="/static/images/b-technology.png" />
+                <img src="@images/b-technology.jpg" />
                 <i class="pv-ico xtechnology"></i>
               </div>
               <div class="pv-media-body">

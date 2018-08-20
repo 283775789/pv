@@ -57,9 +57,25 @@ const share = function (type, url, iconUrl, title, desc) {
   }
 }
 
+/**
+ * action: share a QR-code
+ * @param {Number} type 1-we chat 2-we chat moments 3-qq 4-qq zone
+ * @param {String} img share QR-code url
+ */
+const shareImg = function (type, img) {
+  if (pad) {
+    if (OS_EVN === 'android') {
+      pad.shareImg(type, img)
+    } else if (OS_EVN === 'ios') {
+      pad.shareImg.postMessage(type, img)
+    }
+  }
+}
+
 export default {
   OS_EVN,
   backToPad,
   share,
+  shareImg,
   setStatusBarColor
 }

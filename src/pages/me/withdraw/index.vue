@@ -64,6 +64,7 @@
 
 <script>
 import profile from '@mixins/profile'
+import { Toast } from 'mint-ui'
 
 export default {
   name: 'me-withdraw',
@@ -82,8 +83,7 @@ export default {
     withdraw () {
       this.axios.post(`/withdraw/apply?amount=${this.amount * 1000}`).then(function (respose) {
         if (respose.data.code === 0) {
-          debugger
-          // withdrawal success msg
+          Toast('我们会尽快审批，请耐心等待。')
         }
       }).catch(function (error) {
         console.log(error)

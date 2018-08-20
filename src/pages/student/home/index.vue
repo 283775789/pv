@@ -1,5 +1,5 @@
 <template>
-  <div class="pv-body xscroll xheader xfooter" id="student-home">
+  <div class="pv-body xscroll xheader xfooter" id="student-home" key="student-home">
     <!-- 滚动通知区 -->
     <div class="pv-notice">
       <div class="pv-flex">
@@ -7,16 +7,12 @@
           <i class="pv-ico xnotice"></i>
         </div>
         <div class="pv-flex-item xfull">
-          <div class="pv-swiper swiper-container">
+          <div class="pv-swiper swiper-container" id="follower-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  通知1
-                </div>
-                 <div class="swiper-slide">
-                  通知2
-                </div>
-                 <div class="swiper-slide">
-                  通知3
+                <div class="swiper-slide"
+                     v-for="(notice, index) in notices"
+                     :key="index">
+                     {{notice.title}}
                 </div>
             </div>
           </div>
@@ -29,16 +25,16 @@
     <div class="pv-bill xstudent">
       <div class="pv-card xqrcode">
         <div class="pv-card-body">
-          <img class="xqrcode" src="xxx.png" />
+          <img class="xqrcode" :src="qrCode" />
           <div class="TEXT_SMALL COLOR_WEAKING">（收徒二维码）</div>
           <div class="pv-title xweaking" style="width:100%;">
             <span>通过以下方式邀请</span>
           </div>
           <div class="pv-flex xavg TEXT_CENTER">
-            <div class="pv-flex-item">
+            <div class="pv-flex-item" @click="shareQrCode(1)">
               <i class="pv-ico xweixin"></i>
             </div>
-            <div class="pv-flex-item">
+            <div class="pv-flex-item" @click="shareQrCode(2)">
               <i class="pv-ico xmoments"></i>
             </div>
           </div>
@@ -105,18 +101,57 @@ export default {
   data () {
     return {
       swiper: null,
+      qrCode: '',
+      notices: [],
       activityPopup: {
         visible: false
       }
     }
   },
 
-  mounted () {
-    this.swiper = new window.Swiper('.swiper-container', {
-      autoplay: true,
-      loop: true,
-      direction: 'vertical'
-    })
+  methods: {
+    getQrCode () {
+      const vm = this
+
+      this.axios.get('/personal/myStImg').then(function (response) {
+        if (response.data.code === 0) {
+          vm.qrCode = response.data.data.url
+        } else {
+          // error msg
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+
+    shareQrCode (type) {
+      this.pad.share.call(this, type, this.qrCode)
+    },
+
+    getNotices () {
+      const vm = this
+
+      this.axios.post('/carousel/notice').then(function (response) {
+        if (response.data.code === 0) {
+          vm.notices = response.data.data
+
+          vm.$nextTick(() => {
+            vm.swiper = new window.Swiper('#follower-swiper', {
+              autoplay: true,
+              loop: true,
+              direction: 'vertical'
+            })
+          })
+        }
+      }).catch(function (error) {
+        console.log(error)
+      })
+    }
+  },
+
+  created () {
+    this.getQrCode()
+    this.getNotices()
   }
 }
 </script>

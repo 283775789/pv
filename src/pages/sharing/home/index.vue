@@ -4,7 +4,7 @@
     <pv-xscroll-list
       class="pv-nav"
       :list="categories"
-      :activeIndex="activeCategoryIndex"
+      :activeIndex="activeCategoryIndex < 0 ? activeCategoryIndex + 1 : activeCategoryIndex"
       @change="changeNav">
       <a class="pv-nav-link"
           slot-scope="scope">
@@ -15,7 +15,7 @@
 
     <!-- swiper -->
     <div class="pv-body-inner xnav">
-      <div class="pv-swiper swiper-container">
+      <div class="pv-swiper swiper-container" id="share-home-swiper">
           <div class="swiper-wrapper">
               <div class="swiper-slide"
                 v-for="category in categories"
@@ -45,6 +45,7 @@
                         </div>
                       </div>
                       <div class="pv-introl-imgbox">
+                        <i v-if="artical.type==='2'" class="pv-ico xplay"></i>
                         <img :src="artical.picurl" />
                       </div>
                     </li>
@@ -69,6 +70,10 @@
                     <!-- /multiple images -->
                   </ul>
                   <!-- /artical list -->
+
+                  <!-- nodata -->
+                  <pv-nodata v-if="category.articals.length === 0" style="top: 4rem;" />
+                  <!-- /nodata -->
                 </pv-scroller>
               </div>
           </div>
@@ -86,13 +91,13 @@ export default {
     return {
       swiper: null,
       categories: [],
-      activeCategoryIndex: 0
+      activeCategoryIndex: -1
     }
   },
 
   methods: {
     initSwiper () {
-      this.swiper = new window.Swiper('.swiper-container', {
+      this.swiper = new window.Swiper('#share-home-swiper', {
         on: {
           slideChange: this.slidePage
         }
@@ -110,9 +115,11 @@ export default {
             return {...item, isLoading: false, pageno: 1, pagesize: 10, totalsize: 0, totalpage: 0, articals: []}
           })
 
-          vm.$nextTick(() => {
-            vm.initSwiper()
-          })
+          if (!vm.swiper) {
+            vm.$nextTick(() => {
+              vm.initSwiper()
+            })
+          }
 
           vm.getArticals('nav')
         }
@@ -122,51 +129,66 @@ export default {
     },
 
     /**
+     * action: preload next page data
      *  @param {String} type
      * 'nav': click a navigation or slide a swiper
      * 'load': scroll the page
      * 'refresh': pulldown the page
      */
     getArticals (type) {
-      const activeCategory = this.categories[this.activeCategoryIndex]
+      let category = this.categories[this.activeCategoryIndex]
 
-      // return directly, if the artical list is not empty.
-      if (type === 'nav' && activeCategory.articals.length > 0) return
+      if (type === 'nav') {
+        // if click a navigation or slide a swiper, preload next page data
+        if (this.activeCategoryIndex === this.categories.length - 1) return
+        category = this.categories[this.activeCategoryIndex + 1]
+
+        // return directly, if the artical list is not empty.
+        if (category.articals.length > 0) return
+      }
 
       if (type === 'load') {
         // return directly, when it is the last page.
-        if (activeCategory.pageno >= activeCategory.totalpage) {
-          this.isLoading = false
+        if (category.pageno >= category.totalpage) {
+          category.isLoading = false
           return
         }
 
-        activeCategory.pageno++
+        category.pageno++
       }
 
       // reset pageno, when refreshed.
-      if (type === 'refresh') activeCategory.pageno = 1
+      if (type === 'refresh') category.pageno = 1
 
       const vm = this
       const queryParams = this.qs.stringify({
-        category: activeCategory.dictvalue,
-        pageno: activeCategory.pageno,
-        pagesize: activeCategory.pagesize
+        category: category.dictvalue,
+        pageno: category.pageno,
+        pagesize: category.pagesize
       })
 
       vm.axios.post(`/article/page`, queryParams).then(function (response) {
         if (response.data.code === 0) {
           if (type === 'load') {
-            activeCategory.articals = activeCategory.articals.concat(response.data.data.list)
+            category.articals = category.articals.concat(response.data.data.list)
           } else {
-            activeCategory.totalsize = response.data.data.totalsize
-            activeCategory.totalpage = response.data.data.totalpage
-            activeCategory.articals = response.data.data.list
+            category.totalsize = response.data.data.totalsize
+            category.totalpage = response.data.data.totalpage
+            category.articals = response.data.data.list
           }
-
-          activeCategory.isLoading = false
         }
+
+        if (type === 'nav') {
+          // load the second page data immediately, after the first page data is loaded.
+          if (vm.activeCategoryIndex === -1 && vm.categories.length > 1) {
+            vm.activeCategoryIndex++
+            vm.getArticals('nav')
+          }
+        }
+
+        category.isLoading = false
       }).catch(function (error) {
-        activeCategory.isLoading = false
+        category.isLoading = false
         console.log(error)
       })
     },
