@@ -163,10 +163,10 @@ export default {
             activeCategory.articals = response.data.data.list
           }
 
-          vm.isLoading = false
+          activeCategory.isLoading = false
         }
       }).catch(function (error) {
-        vm.isLoading = false
+        activeCategory.isLoading = false
         console.log(error)
       })
     },
