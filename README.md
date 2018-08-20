@@ -66,6 +66,10 @@ npm run build
 
 2. 修改api.js中的接口url为api服务器真实的url地址
 
+# 布署
+
+运行`npm run build`打包后，会在根目录生成一个dist文件夹，其下所有一个入口index.html文件及相应的js,css文件夹，用tomcat或ngnix启动静态文件服务即可。
+
 
 # 代码框架
 
