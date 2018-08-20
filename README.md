@@ -47,7 +47,7 @@ npm run icons
 npm run dev
 ```
 
-注: 所有开发环境的配置请修改api.js文件
+注: 所有开发环境的配置请修改/src/config/api.js文件
 
 1. 需要配置cookie【WZ_TOKEN】字段以验证用户身份的有效性，产品环境cookie由原生直接在webview中设置，开发环境可以在api.js文件中临时写一个以联调接口
 
