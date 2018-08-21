@@ -4,7 +4,7 @@
     <pv-xscroll-list
       class="pv-nav"
       :list="categories"
-      :activeIndex="activeCategoryIndex < 0 ? activeCategoryIndex + 1 : activeCategoryIndex"
+      :activeIndex="activeCategoryIndex"
       @change="changeNav">
       <a class="pv-nav-link"
           slot-scope="scope">
@@ -24,6 +24,7 @@
                   class="xswiper"
                   :isLoading.sync="category.isLoading"
                   :uid="category.dictvalue"
+                  :loadDistance = "300"
                   @refresh="getArticals('refresh')"
                   @load="getArticals('load')">
 
@@ -31,9 +32,10 @@
                   <ul class="pv-card">
                     <!-- single image -->
                     <li class="pv-introl"
+                      v-if="artical.type==2"
                       v-for="artical in category.articals"
                       :key="artical.aid"
-                      @click="$router.push(`/artical-detail/${artical.aid}`)">
+                      @click="gotoArticalDetail(artical)">
                       <div class="pv-introl-body">
                         <h3 class="pv-introl-title">
                           <i v-if="artical.isoverbid" class="pv-tag">高价文</i>
@@ -84,14 +86,18 @@
 </template>
 
 <script>
+import countScript from '@mixins/home-count.js'
+
 export default {
   name: 'sharing-home',
+
+  mixins: [countScript],
 
   data () {
     return {
       swiper: null,
       categories: [],
-      activeCategoryIndex: -1
+      activeCategoryIndex: 0
     }
   },
 
@@ -112,7 +118,7 @@ export default {
         if (response.data.code === 0) {
           // extend each category object to be get the artical list conveniently.
           vm.categories = response.data.data.map((item) => {
-            return {...item, isLoading: false, pageno: 1, pagesize: 10, totalsize: 0, totalpage: 0, articals: []}
+            return {...item, isLoading: false, pageno: 1, pagesize: 1000, totalsize: 0, totalpage: 0, articals: []}
           })
 
           if (!vm.swiper) {
@@ -130,7 +136,8 @@ export default {
 
     /**
      * action: preload next page data
-     *  @param {String} type
+     * @param {String} type
+     * 'preload': preload the data of next page
      * 'nav': click a navigation or slide a swiper
      * 'load': scroll the page
      * 'refresh': pulldown the page
@@ -138,13 +145,20 @@ export default {
     getArticals (type) {
       let category = this.categories[this.activeCategoryIndex]
 
-      if (type === 'nav') {
-        // if click a navigation or slide a swiper, preload next page data
-        if (this.activeCategoryIndex === this.categories.length - 1) return
+      if (type === 'preload') {
         category = this.categories[this.activeCategoryIndex + 1]
 
         // return directly, if the artical list is not empty.
         if (category.articals.length > 0) return
+      }
+
+      if (type === 'nav' && category.articals.length > 0) {
+        if (this.activeCategoryIndex < this.categories.length - 1) {
+          this.getArticals('preload')
+        }
+
+        // return directly, if the artical list is not empty.
+        return
       }
 
       if (type === 'load') {
@@ -153,7 +167,6 @@ export default {
           category.isLoading = false
           return
         }
-
         category.pageno++
       }
 
@@ -179,10 +192,9 @@ export default {
         }
 
         if (type === 'nav') {
-          // load the second page data immediately, after the first page data is loaded.
-          if (vm.activeCategoryIndex === -1 && vm.categories.length > 1) {
-            vm.activeCategoryIndex++
-            vm.getArticals('nav')
+          // preload the next page data.
+          if (vm.activeCategoryIndex < vm.categories.length - 1) {
+            vm.getArticals('preload')
           }
         }
 
@@ -190,6 +202,19 @@ export default {
       }).catch(function (error) {
         category.isLoading = false
         console.log(error)
+      })
+    },
+
+    /**
+     * action: view artical detail
+     * @param {Object} artical
+     */
+    gotoArticalDetail (artical) {
+      this.$router.push({
+        name: 'articalDetail',
+        params: {
+          artical
+        }
       })
     },
 

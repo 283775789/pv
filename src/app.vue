@@ -3,7 +3,7 @@
     <!-- header -->
     <pv-header v-if="$route.meta.title">
       <pv-back
-        v-if="$route.meta.level>1"
+        v-show="$route.meta.level>1"
         slot="left"
         class="pv-header-backbtn">
       </pv-back>

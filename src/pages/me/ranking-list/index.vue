@@ -95,8 +95,6 @@ export default {
         return
       }
 
-      debugger
-
       this.axios.post(ranking.apiUrl).then(function (response) {
         if (response.data.code === 0) {
           ranking.list = response.data.data

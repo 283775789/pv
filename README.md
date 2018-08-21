@@ -66,6 +66,8 @@ npm run build
 
 2. 修改api.js中的接口url为api服务器真实的url地址
 
+3. 如需配置资源公共地址(主要页面与css中引入的静态图片地址)，请修改根目录/config/index.js中的,build.assetsPublicPath属性。
+
 # 布署
 
 运行`npm run build`打包后，会在根目录生成一个dist文件夹，其下会有一个入口index.html文件及相应的js,css文件夹，用tomcat或ngnix启动静态文件服务即可。
@@ -80,4 +82,3 @@ npm run build
 + 代码规范: [re3规范](http://www.rew3c.com)
 
 扩展该项目时，请参照以上官网文档来编写代码，以保持项目的维护性与扩展性。
-

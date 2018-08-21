@@ -69,6 +69,8 @@ import { Toast } from 'mint-ui'
 export default {
   name: 'me-withdraw',
 
+  mixins: [profile],
+
   data () {
     return {
       amount: 10,
@@ -90,8 +92,6 @@ export default {
       })
     }
   },
-
-  mixins: [profile],
 
   watch: {
     $route (to, from) {

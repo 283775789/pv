@@ -11,7 +11,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/mobile-server':{
+      '/mobile-server': {
         target: 'http://wz.xiaomie.shop',
         changeOrigin: true
       }
@@ -55,13 +55,13 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: 'http://wz.xiaomie.shop/mobile-server/',
+    assetsPublicPath: 'http://wz.xiaomie.shop/mobile-server',
 
     /**
      * Source Maps
      */
 
-    productionSourceMap: true,
+    productionSourceMap: false,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 

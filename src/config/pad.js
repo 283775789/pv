@@ -1,6 +1,9 @@
 let OS_EVN = ''
 let pad = null
 
+// UI interface for pad
+window.UI = {}
+
 // android environment detection
 if (window.YgApi) {
   OS_EVN = 'android'

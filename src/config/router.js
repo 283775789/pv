@@ -45,7 +45,8 @@ export default new Router({
       }
     },
     {
-      path: '/artical-detail/:aid',
+      path: '/artical-detail',
+      name: 'articalDetail',
       component: ArticalDetail,
       meta: {
         title: '高价文',

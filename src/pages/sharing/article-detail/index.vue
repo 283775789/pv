@@ -14,7 +14,23 @@
                 </div>
               </div>
               <div class="pv-artical-body">
-                <div v-html="artical.content"></div>
+                <template v-if="artical.type === '2'">
+                  <!-- video body -->
+                  <iframe class="pv-ifv" v-if="artical.videourl.indexOf('v.qq.com')!==-1"
+                          :src="artical.videourl"
+                          frameborder="0">
+                  </iframe>
+                  <!-- /iframe video -->
+
+                  <!-- video -->
+                  <video v-else class="pv-video"
+                         :src="artical.videourl">
+                  </video>
+                </template>
+                <!-- video-body -->
+
+                <!-- artical body -->
+                <div v-else v-html="artical.content"></div>
               </div>
             </div>
           </div>
@@ -69,7 +85,7 @@ export default {
   methods: {
     getArticalDetail () {
       const vm = this
-      const articalId = this.$route.params.aid
+      const articalId = this.$route.params.artical.aid
 
       Indicator.open()
       vm.axios.post(`/article/detail?aid=${articalId}`).then(function (response) {
@@ -109,7 +125,12 @@ export default {
   },
 
   created () {
-    this.getArticalDetail()
+    // type 1-artical 2-video 3-overbid artical
+    if (this.$route.params.artical.type === '2') {
+      this.artical = this.$route.params.artical
+    } else {
+      this.getArticalDetail()
+    }
   }
 }
 </script>
