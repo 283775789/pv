@@ -16,7 +16,7 @@
               <div class="pv-artical-body">
                 <template v-if="artical.type === '2'">
                   <!-- video body -->
-                  <iframe class="pv-ifv" v-if="artical.videourl.indexOf('v.qq.com')!==-1"
+                  <iframe class="pv-video" v-if="artical.videourl.indexOf('v.qq.com')!==-1"
                           :src="artical.videourl"
                           frameborder="0">
                   </iframe>

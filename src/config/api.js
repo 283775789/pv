@@ -9,7 +9,7 @@ import { Toast } from 'mint-ui'
 Vue.prototype.qs = require('qs')
 Vue.prototype.axios = axios
 
-const apiUrl = 'http://192.168.115.247:9527'
+const apiUrl = 'http://192.168.0.3:9527'
 
 // the development enviroment have to set a cookie for get api data
 // please comment the follow code in the product environment

@@ -1,56 +1,61 @@
 <template>
-  <div class="pv-body xfooter" id="me-home">
+  <div class="pv-body xfooter xscroll" id="me-home">
     <pv-profile class="xhome" />
 
-    <!-- navigation -->
-    <div class="pv-card xpy">
-      <div class="pv-flex xavg MB_SMAlL">
-        <router-link
-          class="pv-flex-item"
-          to="/income-list">
-          <i class="pv-ico xincome"></i>
-          <div>收入明细</div>
-        </router-link>
-        <router-link
-           class="pv-flex-item"
-           to="/withdraw-list">
-          <i class="pv-ico xwithdraw"></i>
-          <div>提现记录</div>
-        </router-link>
-        <router-link
-           class="pv-flex-item"
-           to="/ranking-list">
-          <i class="pv-ico xrank"></i>
-          <div>排行榜</div>
-        </router-link>
+      <!-- banner -->
+      <div class="pv-card xbanner">
+        <img src="@images/banner1.png" />
       </div>
-      <div class="pv-flex xavg">
-        <router-link
-           class="pv-flex-item"
-           to="/guide">
-          <i class="pv-ico xguide"></i>
-          <div>新手指南</div>
-        </router-link>
-        <router-link
-           class="pv-flex-item"
-           to="/service">
-          <i class="pv-ico xservice"></i>
-          <div>客服</div>
-        </router-link>
-        <router-link
-           class="pv-flex-item"
-           to="/business">
-          <i class="pv-ico xbusiness"></i>
-          <div>商务合作</div>
-        </router-link>
-      </div>
-    </div>
-    <!-- navigation -->
+       <!-- /banner -->
 
-    <!-- withdraw list -->
-    <div class="pv-body-inner BG_WHITE" style="top: 20rem;">
-      <div class="pv-card" style="height:100%;">
-         <div class="pv-swiper swiper-container" id="me-home-swiper">
+      <!-- navigation -->
+      <div class="pv-card xpy">
+        <div class="pv-flex xavg MB_SMAlL">
+          <router-link
+            class="pv-flex-item"
+            to="/income-list">
+            <i class="pv-ico xincome"></i>
+            <div>收入明细</div>
+          </router-link>
+          <router-link
+            class="pv-flex-item"
+            to="/withdraw-list">
+            <i class="pv-ico xwithdraw"></i>
+            <div>提现记录</div>
+          </router-link>
+          <router-link
+            class="pv-flex-item"
+            to="/ranking-list">
+            <i class="pv-ico xrank"></i>
+            <div>排行榜</div>
+          </router-link>
+        </div>
+        <div class="pv-flex xavg">
+          <router-link
+            class="pv-flex-item"
+            to="/guide">
+            <i class="pv-ico xguide"></i>
+            <div>新手指南</div>
+          </router-link>
+          <router-link
+            class="pv-flex-item"
+            to="/service">
+            <i class="pv-ico xservice"></i>
+            <div>客服</div>
+          </router-link>
+          <router-link
+            class="pv-flex-item"
+            to="/business">
+            <i class="pv-ico xbusiness"></i>
+            <div>商务合作</div>
+          </router-link>
+        </div>
+      </div>
+      <!-- navigation -->
+
+      <!-- withdraw list -->
+      <div class="pv-card" style="height:11.2rem;">
+         <div class="pv-swiper swiper-container swiper-no-swiping" id="me-home-swiper">
             <div ref="swiperWrapper" class="swiper-wrapper">
                 <div class="swiper-slide"
                   ref="slide"
@@ -72,7 +77,6 @@
             </div>
          </div>
       </div>
-    </div>
     <!-- /withdraw list -->
   </div>
 </template>

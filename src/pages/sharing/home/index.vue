@@ -32,7 +32,6 @@
                   <ul class="pv-card">
                     <!-- single image -->
                     <li class="pv-introl"
-                      v-if="artical.type==2"
                       v-for="artical in category.articals"
                       :key="artical.aid"
                       @click="gotoArticalDetail(artical)">
@@ -86,12 +85,8 @@
 </template>
 
 <script>
-import countScript from '@mixins/home-count.js'
-
 export default {
   name: 'sharing-home',
-
-  mixins: [countScript],
 
   data () {
     return {
@@ -118,7 +113,7 @@ export default {
         if (response.data.code === 0) {
           // extend each category object to be get the artical list conveniently.
           vm.categories = response.data.data.map((item) => {
-            return {...item, isLoading: false, pageno: 1, pagesize: 1000, totalsize: 0, totalpage: 0, articals: []}
+            return {...item, isLoading: false, pageno: 1, pagesize: 10, totalsize: 0, totalpage: 0, articals: []}
           })
 
           if (!vm.swiper) {

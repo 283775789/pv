@@ -44,3 +44,13 @@ $card-spaceing: $spacing-tiny !default; // 卡片间距
 .pv-card.xborder {
   border: .5px solid $color-border-main;
 }
+
+// 卡片: 做为banner容器
+.pv-card.xbanner {
+  padding: $card-padding;
+  text-align: center;
+}
+
+.pv-card.xbanner > img {
+  max-width: 100%;
+}
