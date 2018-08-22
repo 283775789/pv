@@ -46,7 +46,7 @@ const router = new Router({
       }
     },
     {
-      path: '/artical-detail',
+      path: '/artical-detail/:aid',
       name: 'articalDetail',
       component: ArticalDetail,
       meta: {
@@ -130,7 +130,7 @@ const router = new Router({
       }
     },
     {
-      path: '/guide-detail',
+      path: '/guide-detail/:markdown',
       component: GuideDetail,
       meta: {
         type: 'me',

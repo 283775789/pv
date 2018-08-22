@@ -1,4 +1,5 @@
 // import library and config
+import '@utils/initFontSize.js'
 import pad from '@/config/pad'
 import Vue from 'vue'
 import Mint from 'mint-ui'

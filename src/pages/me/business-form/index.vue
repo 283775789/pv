@@ -42,8 +42,14 @@
       </div>
 
       <div class="pv-checklist" style="padding-left: 3.2rem;">
-        <label><input type="checkbox" v-model="agreement1" />我已阅读并同意《投放规范》</label>
-        <label><input type="checkbox" v-model="agreement2" />我已阅读并同意《电子合作协议》</label>
+        <div>
+          <label><input type="checkbox" v-model="agreement1" />我已阅读并同意</label>
+          <router-link to="/guide-detail/xy2.md">《投放规范》</router-link>
+        </div>
+        <div>
+          <label><input type="checkbox" v-model="agreement2" />我已阅读并同意</label>
+          <router-link to="/guide-detail/xy1.md">《电子合作协议》</router-link>
+        </div>
       </div>
     </div>
 

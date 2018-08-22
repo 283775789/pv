@@ -32,6 +32,14 @@ body {
   background-color: $color-bg-body;
 }
 
+// 隐藏站长统计链接
+body > a:first-child {
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
 // 外边距重置
 html, body, h1, h2, h3, h4, h5, h6, ul, ol, p {
   margin: 0;

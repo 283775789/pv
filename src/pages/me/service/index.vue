@@ -1,9 +1,9 @@
 <template>
   <div class="pv-body xheader" id="me-service">
     <div class="pv-service">
-      <img src="" alt="">
+      <img src="@images/logo.png" alt="来米" style="height: 5rem; margin-bottom: 1rem;">
       <div style="display: inline-block;">
-        <div class="pv-form xservice xreadonly">
+        <div v-if="service" class="pv-form xservice xreadonly">
           <div class="pv-form-row">
             <label class="pv-form-label">工作时间：</label>
             <div class="pv-form-body">{{service.srvtime}}</div>

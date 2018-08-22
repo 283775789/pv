@@ -28,6 +28,9 @@ export default {
     activeIndex: {
       type: Number,
       default: 0
+    },
+    uid: {
+      type: [Number, String]
     }
   },
 
@@ -71,6 +74,9 @@ export default {
       // return directly when the distance is less than 10 px,
       if (Math.abs(centerDiff - curentScrollLeft) < 10) return
 
+      // save scroll postion
+      if (this.uid) window.sessionStorage.setItem(`${this.uid}`, JSON.stringify({scrollLeft: centerDiff, path: this.$route.path}))
+
       // move the scroll bar with animation.
       tween({x: curentScrollLeft}, {x: centerDiff}, 200, function (update) {
         listBody.scrollLeft = update.x
@@ -112,6 +118,23 @@ export default {
     activeIndex (val) {
       this.currentIndex = val
       this.updateStates(val)
+    },
+
+    $route (to, from) {
+      if (!this.uid) return
+
+      // scroll to the last postion
+      let scrollSession = window.sessionStorage.getItem(`${this.uid}`)
+
+      if (scrollSession) {
+        scrollSession = JSON.parse(scrollSession)
+        if (to.path === scrollSession.path) {
+          this.$nextTick(() => {
+            const listBody = this.$refs.body
+            listBody.scrollLeft = scrollSession.scrollLeft
+          })
+        }
+      }
     }
   }
 }

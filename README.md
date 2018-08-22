@@ -40,6 +40,21 @@
 npm run icons
 ```
 
+# 静态资源
+
+因系统中的一部份页面是纯静态页面,如新手指南文章列表，邀请页等，要正常访问这些资源需要配置静态资源地址:
+/src/config/api.js中的staticUrl变量
+
+静态文件夹为根目录static文件夹
+
+# 新手指南文章
+
+目录: static/docs文件夹
+
+配置显示的指南: guides.json
+
+docs目录下的markdown文件名要与guides.json中配置的相一致
+
 
 # 启用开发环境
 

@@ -1,0 +1,46 @@
+// ------------------ markdown ------------------
+
+// markdown容器
+.pv-markdown {
+  padding: 0 $spacing-small $spacing-small;
+}
+
+.pv-markdown h1 {
+  padding: $spacing-small;
+  margin: 0 (-$spacing-small) $spacing-small;
+  font-size: $font-size-large;
+  font-weight: 700;
+  background: #fff;
+}
+
+.pv-markdown h2,
+.pv-markdown h3 {
+  margin-top: $spacing-tiny;
+  margin-bottom: $spacing-step;
+  font-size: $font-size-medium;
+  font-weight: 700;
+}
+
+.pv-markdown p {
+  margin-bottom: $spacing-small;
+  font-size: $font-size-medium;
+}
+
+.pv-markdown ul,
+.pv-markdown ol {
+  padding-left: $spacing-medium;
+  margin: $spacing-tiny 0;
+}
+
+.pv-markdown ul > li,
+.pv-markdown ol > li {
+  margin-bottom: $spacing-step;
+}
+
+.pv-markdown ul > li {
+  list-style: disc;
+}
+
+.pv-markdown ol > li {
+  list-style: decimal;
+}

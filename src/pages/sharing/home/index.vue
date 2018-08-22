@@ -5,6 +5,7 @@
       class="pv-nav"
       :list="categories"
       :activeIndex="activeCategoryIndex"
+      uid="sharing-artical-nav"
       @change="changeNav">
       <a class="pv-nav-link"
           slot-scope="scope">
@@ -205,12 +206,8 @@ export default {
      * @param {Object} artical
      */
     gotoArticalDetail (artical) {
-      this.$router.push({
-        name: 'articalDetail',
-        params: {
-          artical
-        }
-      })
+      // 2-is a video
+      this.$router.push(`/artical-detail/${artical.aid}`)
     },
 
     changeNav (navIndex) {

@@ -1,5 +1,11 @@
+// 主体: 邀请页
+.pv-body.xinvite {
+  background: #f6efce;
+}
+
 // 卡片: 提现动态容器
 .pv-card.xwithdraw {
+  position: relative;
   height: 100%;
   padding-top: .3rem;
   margin: 0 .875rem;
@@ -10,4 +16,12 @@
 
 .pv-card.xwithdraw .pv-title {
   margin-bottom: -.2rem;
+}
+
+.pv-card.xwithdraw > .xwithdraw-swiperbox {
+  position: absolute;
+  top: 2.5rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

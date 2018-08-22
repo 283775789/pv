@@ -29,7 +29,7 @@
                   :isLoading.sync="category.isLoading">
                   <!-- category list -->
                   <ul class="pv-card">
-                    <li class="pv-flexrow xsavespacing"
+                    <li v-if="activeTabIndex < 2" class="pv-flexrow xsavespacing"
                       v-for="item in category.list"
                       :key="item.pid">
                       <div class="pv-flexrow-cell" style="width: 40%;">
@@ -41,6 +41,20 @@
                       </div>
                       <div class="pv-flexrow-cell FLEX1">
                         <span class="TEXT_MEDIUM COLOR_PRICE">{{item.afterbalance|liToYuan}}</span>
+                      </div>
+                    </li>
+                    <li v-else class="pv-flexrow xborder"
+                      v-for="item in category.list"
+                      :key="item.uid">
+                      <div class="pv-flexrow-cell">
+                        <img class="pv-avatar" :src="item.headimg" />
+                      </div>
+                      <div class="pv-flexrow-cell">
+                        <div class="TEXT_MEDIUM">{{item.nickname}}</div>
+                        <div class="TEXT_SMALL COLOR_WEAKING">{{item.createtime|unixTimeToDatetime}}</div>
+                      </div>
+                      <div class="pv-flexrow-cell FLEX1">
+                        <span class="TEXT_MEDIUM">{{item.amount|liToYuan}}元</span>
                       </div>
                     </li>
                   </ul>

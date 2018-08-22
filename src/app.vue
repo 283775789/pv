@@ -16,7 +16,7 @@
     <!-- /content -->
 
     <!-- footer -->
-    <div v-if="$route.meta.level === 1"
+    <div v-if="footerVisible"
       class="pv-footer">
       <router-link to="/">
         <i class="pv-ico xshare"></i>
@@ -38,9 +38,27 @@
 <script>
 export default {
   name: 'app',
+
   data () {
     return {
-      activeIndex: 3
+      activeIndex: 3,
+      footerVisible: true
+    }
+  },
+
+  created () {
+    this.footerVisible = this.$route.meta.level === 1
+  },
+
+  watch: {
+    $route (to, from) {
+      if (this.$route.meta.level === 1) {
+        setTimeout(() => {
+          this.footerVisible = true
+        }, 300)
+      } else {
+        this.footerVisible = false
+      }
     }
   }
 }
