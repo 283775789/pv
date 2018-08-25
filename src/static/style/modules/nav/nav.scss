@@ -2,7 +2,7 @@
 $nav-height: 2.2rem !default; // 高度
 $nav-bg: #fff !default; // 背景色
 $nav-border-color: $color-border-main !default; // 边框色
-$nav-link-font-size: $font-size-medium !default; // 导航链接字号
+$nav-link-font-size: $font-size-large !default; // 导航链接字号
 $nav-link-color: $color-text-main !default; // 导航链接文字颜色
 $nav-link-active-color: $color-main !default; // 导航链接选中文本颜色
 $nav-active-line-color: $color-main !default; // 选中项标识线颜色
@@ -25,10 +25,10 @@ $nav-active-line-color: $color-main !default; // 选中项标识线颜色
   font-size: $nav-link-font-size;
   color: $nav-link-color;
   vertical-align: top;
+}
 
-  &.xactive {
-    color: $nav-link-active-color;
-  }
+.xactive > .pv-nav-link {
+  color: $nav-link-active-color;
 }
 
 // 带分隔线

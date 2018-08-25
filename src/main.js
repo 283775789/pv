@@ -18,6 +18,15 @@ Vue.use(Mint)
 
 Vue.prototype.pad = pad
 
+// set page title
+Vue.mixin({
+  created: function () {
+    if (this.$options.title) {
+      store.commit('updatePageTitle', this.$options.title)
+    }
+  }
+})
+
 // create the vue root instance
 new Vue({
   el: '#app',

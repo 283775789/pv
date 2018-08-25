@@ -44,11 +44,11 @@
       <div class="pv-checklist" style="padding-left: 3.2rem;">
         <div>
           <label><input type="checkbox" v-model="agreement1" />我已阅读并同意</label>
-          <router-link to="/guide-detail/xy2.md">《投放规范》</router-link>
+          <router-link to="/guide-detail/xy2.md" class="pv-link">《投放规范》</router-link>
         </div>
         <div>
           <label><input type="checkbox" v-model="agreement2" />我已阅读并同意</label>
-          <router-link to="/guide-detail/xy1.md">《电子合作协议》</router-link>
+          <router-link to="/guide-detail/xy1.md" class="pv-link">《电子合作协议》</router-link>
         </div>
       </div>
     </div>
@@ -70,6 +70,7 @@ import { Toast } from 'mint-ui'
 
 export default {
   name: 'pv-me-business-form',
+  title: '申请合作',
 
   data () {
     return {

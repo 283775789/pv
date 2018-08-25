@@ -1,6 +1,7 @@
 <template>
   <div class="pv-body xscroll xheader" id="me-withdrew-list">
-    <ul class="pv-card">
+    <!-- list -->
+    <ul v-if="Withdrawals.length>0" class="pv-card">
       <li class="pv-flexrow xsavespacing"
         v-for="(withdrawal,index) in Withdrawals"
         :key="index">
@@ -15,12 +16,21 @@
         </div>
       </li>
     </ul>
+    <!-- list -->
+
+    <!-- nodata -->
+    <pv-nodata v-else>
+      <p class="MB_LARGE">您目前还没有提现申请哦!</p>
+      <router-link to="/" class="pv-btn xmain xfull"><span>去作任务赚钱</span></router-link>
+    </pv-nodata>
+    <!-- /nodata -->
   </div>
 </template>
 
 <script>
 export default {
   name: 'me-withdrew-list',
+  title: '提现记录',
 
   data () {
     return {

@@ -26,9 +26,10 @@
                   class="xswiper"
                   :uid="index"
                   :refreshDistance='0'
+                  :loadDistance="loadDistance"
                   :isLoading.sync="category.isLoading">
                   <!-- category list -->
-                  <ul class="pv-card">
+                  <ul v-if="category.list.length>0" class="pv-card">
                     <li v-if="activeTabIndex < 2" class="pv-flexrow xsavespacing"
                       v-for="item in category.list"
                       :key="item.pid">
@@ -59,6 +60,20 @@
                     </li>
                   </ul>
                   <!-- /category list -->
+
+                  <!-- nodata -->
+                  <pv-nodata v-else>
+                    <template v-if="activeTabIndex===0">
+                      <p class="MB_LARGE">您目前还没有阅读收入</p>
+                      <router-link to="/" class="pv-btn xmain xfull"><span>去作任务赚钱</span></router-link>
+                    </template>
+                    <template v-else>
+                      <p v-if="activeTabIndex===1" class="MB_LARGE">您目前还没有其他收入</p>
+                      <p v-else class="MB_LARGE">您目前还没有徒弟</p>
+                      <router-link to="/student" class="pv-btn xmain xfull"><span>去作邀请徒弟赚钱</span></router-link>
+                    </template>
+                  </pv-nodata>
+                  <!-- /nodata -->
                 </pv-scroller>
               </div>
           </div>
@@ -73,6 +88,7 @@ import Profile from '@comps/profile'
 
 export default {
   name: 'me-income-list',
+  title: '收入明细',
 
   data () {
     return {
@@ -104,6 +120,12 @@ export default {
           list: []
         }
       ]
+    }
+  },
+
+  computed: {
+    loadDistance () {
+      return this.categories[this.activeTabIndex].length > 0 ? 100 : -1
     }
   },
 

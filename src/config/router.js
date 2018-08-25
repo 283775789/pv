@@ -1,6 +1,5 @@
 /**
  * routing meta information:
- * title: The title content of the page, it is displayed in the middle of the header.
  * level: Indicates the level of the page and the effect of sliding when the page is changed.
  */
 
@@ -41,7 +40,6 @@ const router = new Router({
       meta: {
         type: 'home',
         keepAlive: true,
-        title: '来米资讯',
         level: 1
       }
     },
@@ -51,7 +49,6 @@ const router = new Router({
       component: ArticalDetail,
       meta: {
         type: 'home',
-        title: '高价文',
         level: 2
       }
     },
@@ -62,7 +59,6 @@ const router = new Router({
       component: Student,
       meta: {
         type: 'follower',
-        title: '邀请好友',
         level: 1
       }
     },
@@ -89,7 +85,6 @@ const router = new Router({
       component: IncomeList,
       meta: {
         type: 'me',
-        title: '收入明细',
         level: 2
       }
     },
@@ -98,7 +93,6 @@ const router = new Router({
       component: Withdraw,
       meta: {
         type: 'me',
-        title: '提现',
         level: 2
       }
     },
@@ -107,7 +101,6 @@ const router = new Router({
       component: WithdrawList,
       meta: {
         type: 'me',
-        title: '提现记录',
         level: 2
       }
     },
@@ -116,7 +109,6 @@ const router = new Router({
       component: RankingList,
       meta: {
         type: 'me',
-        title: '排行榜',
         level: 2
       }
     },
@@ -125,7 +117,6 @@ const router = new Router({
       component: Guide,
       meta: {
         type: 'me',
-        title: '新手指南',
         level: 2
       }
     },
@@ -134,7 +125,6 @@ const router = new Router({
       component: GuideDetail,
       meta: {
         type: 'me',
-        title: '指南详情',
         level: 3
       }
     },
@@ -143,7 +133,6 @@ const router = new Router({
       component: Service,
       meta: {
         type: 'me',
-        title: '客服',
         level: 2
       }
     },
@@ -152,7 +141,6 @@ const router = new Router({
       component: Business,
       meta: {
         type: 'me',
-        title: '商务合作',
         level: 2
       }
     },
@@ -161,7 +149,6 @@ const router = new Router({
       component: BusinessForm,
       meta: {
         type: 'me',
-        title: '申请合作',
         level: 3
       }
     }

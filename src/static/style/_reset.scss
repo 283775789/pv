@@ -26,7 +26,7 @@ body {
   overflow: hidden;
   font-family: $font-family-default;
   font-size: $font-size-default;
-  color: $color-text-main;
+  color: #000;
   text-align: left;
   word-break: break-word;
   background-color: $color-bg-body;
@@ -133,7 +133,7 @@ textarea::placeholder {
 // 图标
 .pv-ico {
   box-sizing: content-box;
-  padding: 1px;
+  padding: 2px;
   display: inline-block;
   vertical-align: middle;
   background-image: url("~@images/icons.png");
@@ -145,4 +145,9 @@ textarea::placeholder {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+// 重置minit-ui
+.mint-toast.is-placemiddle {
+  white-space: nowrap;
 }

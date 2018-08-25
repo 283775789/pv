@@ -15,7 +15,7 @@
     <!-- /navigation -->
 
     <!-- swiper -->
-    <div class="pv-body-inner xnav">
+    <div class="pv-body-inner xnav xwhite">
       <div class="pv-swiper swiper-container" id="share-home-swiper">
           <div class="swiper-wrapper">
               <div class="swiper-slide"
@@ -48,7 +48,12 @@
                       </div>
                       <div class="pv-introl-imgbox">
                         <i v-if="artical.type==='2'" class="pv-ico xplay"></i>
-                        <img :src="artical.picurl" />
+                        <img v-show="artical.imageLoaded==='done'"
+                             @load="artical.imageLoaded='done'"
+                             @error="artical.imageLoaded='error'"
+                             :src="artical.picurl" />
+                        <img v-if="artical.imageLoaded==='doing'" src="@images/placeholder.png" />
+                        <img v-if="artical.imageLoaded==='error'" src="@images/img-404.gif" />
                       </div>
                     </li>
                     <!-- /single image -->
@@ -88,6 +93,7 @@
 <script>
 export default {
   name: 'sharing-home',
+  title: '来米资讯',
 
   data () {
     return {
@@ -178,6 +184,11 @@ export default {
 
       vm.axios.post(`/article/page`, queryParams).then(function (response) {
         if (response.data.code === 0) {
+          response.data.data.list = response.data.data.list.map((item) => {
+            item.imageLoaded = 'doing'
+            return item
+          })
+
           if (type === 'load') {
             category.articals = category.articals.concat(response.data.data.list)
           } else {
@@ -222,6 +233,10 @@ export default {
 
   mounted () {
     this.getCategories()
+  },
+
+  activated: function () {
+    this.$store.commit('updatePageTitle', this.$options.title)
   }
 }
 </script>

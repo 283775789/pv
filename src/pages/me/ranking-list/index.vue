@@ -57,6 +57,7 @@ import Profile from '@comps/profile'
 
 export default {
   name: 'me-ranking-list',
+  title: '排行榜',
 
   components: {
     'pv-profile': Profile

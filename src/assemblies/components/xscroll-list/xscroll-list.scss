@@ -34,7 +34,7 @@ $line-color: $color-main !default; // 位置标识线颜色
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 3px;
+  height: 4px;
   background: $line-color;
   transition: all $time linear;
 }

@@ -46,3 +46,9 @@ $body-bg: $color-bg-body !default; // 背景色
 .pv-body.xhn {
   top: $header-height + $nav-height;
 }
+
+// 主体:页面头部同时有tab导航时
+.pv-body.xwhite,
+.pv-body-inner.xwhite {
+  background: #fff;
+}

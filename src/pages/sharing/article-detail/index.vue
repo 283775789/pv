@@ -9,11 +9,11 @@
                 <div class="pv-artical-title">{{artical.title}}</div>
                 <div class="pv-artical-props">
                   <div class="pv-artical-date">{{artical.createtime|unixTimeToDate}}</div>
-                  <div class="pv-artical-price">{{artical.readprice/1000}}元/阅读</div>
+                  <div class="pv-artical-price">{{artical.readprice|liToYuan}}元/阅读</div>
                   <div class="pv-artical-pv">浏览 {{artical.readnum}}</div>
                 </div>
               </div>
-              <div class="pv-artical-body">
+              <div ref="body" class="pv-artical-body">
                 <!-- artical: type 1-artical 2-video 3-overbid artical -->
                 <template v-if="artical.type === '2'">
                   <!-- video body -->
@@ -40,7 +40,7 @@
 
         <!-- footer-->
         <div class="pv-btnfooter">
-          <a class="pv-btn xmain xfull" @click="sharePopup.visible = true">立即分享<small>(0.15元/阅读)</small></a>
+          <a class="pv-btn xmain xfull" @click="sharePopup.visible = true">立即分享<small>({{artical.readprice|liToYuan}}元/阅读)</small></a>
         </div>
         <!-- /footer-->
       </template>
@@ -73,6 +73,7 @@ import { Indicator } from 'mint-ui'
 
 export default {
   name: 'sharing-article-detail',
+  title: '',
 
   data () {
     return {
@@ -92,6 +93,28 @@ export default {
       vm.axios.post(`/article/detail?aid=${articalId}`).then(function (response) {
         if (response.data.code === 0) {
           vm.artical = response.data.data
+
+          // set page title
+          if (vm.artical.type === '1') {
+            vm.$store.commit('updatePageTitle', '热文')
+          } else if (vm.artical.isoverbid === '2') {
+            vm.$store.commit('updatePageTitle', '视频')
+          } else if (vm.artical.isoverbid === '3') {
+            vm.$store.commit('updatePageTitle', '高价文')
+          }
+
+          // replace with 404 image when the error event is triggered on a image
+          vm.$nextTick(() => {
+            const images = vm.$refs.body.querySelectorAll('img')
+            images.forEach(img => {
+              const handleImageError = function () {
+                img.src = vm.staticUrl + '/img/img-404.gif'
+                img.removeEventListener('error', handleImageError)
+              }
+
+              img.addEventListener('error', handleImageError)
+            })
+          })
         }
 
         Indicator.close()

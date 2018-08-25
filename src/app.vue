@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <!-- header -->
-    <pv-header v-if="$route.meta.title">
+    <pv-header v-if="$store.state.pageTitle">
       <pv-back
         v-show="$route.meta.level>1"
         slot="left"
         class="pv-header-backbtn">
       </pv-back>
-      {{ $route.meta.title }}
+      {{ $store.state.pageTitle }}
     </pv-header>
     <!-- /header -->
 

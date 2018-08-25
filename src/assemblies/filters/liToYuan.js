@@ -1,3 +1,4 @@
 export default function (value) {
-  return Math.floor(value / 10) / 100
+  let r = Math.floor(value / 10) / 100
+  return isNaN(r) ? 0 : r
 }

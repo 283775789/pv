@@ -11,7 +11,7 @@
 
       <!-- withdraw info -->
       <div class="pv-flexrow TEXT_MEDIUM">
-        <div class="pv-flexrow-cell">{{userData.nickname}}</div>
+        <div class="pv-flexrow-cell">用户名称：{{userData.nickname}}</div>
       </div>
       <div class="pv-flexrow TEXT_MEDIUM">
         <div class="pv-flexrow-cell">提现金额：{{amount}}</div>
@@ -68,6 +68,7 @@ import { Toast } from 'mint-ui'
 
 export default {
   name: 'me-withdraw',
+  title: '提现',
 
   mixins: [profile],
 

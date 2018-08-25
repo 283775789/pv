@@ -9,14 +9,14 @@ import { Toast } from 'mint-ui'
 Vue.prototype.qs = require('qs')
 Vue.prototype.axios = axios
 
-const apiUrl = 'http://192.168.115.247:9527'
+const apiUrl = 'http://192.168.0.3:9527'
 
 // static resource url prefix
-Vue.prototype.staticUrl = 'http://192.168.115.247:9527/static'
+Vue.prototype.staticUrl = 'http://192.168.0.3:9527/static'
 
 // the development enviroment have to set a cookie for get api data
 // please comment the follow code in the product environment
-document.cookie = 'WZ_TOKEN=jF/QL/+N1mQYAfWHoYGqn85QH1aOt6HOIqLO46wiTNw=;'
+document.cookie = 'WZ_TOKEN=vE8z9MABwcljLaWXNj8Ath9ceInZQAQer8VGLsBw43U=;'
 
 /* ------------------------------ base url config ------------------------------ */
 const baseURL = `${apiUrl}/mobile-server`

@@ -16,6 +16,7 @@ $footer-font-size: $font-size-small !default; // 字号
   justify-content: center;
   width: 100%;
   height: $footer-height;
+  padding-top: .3rem;
   font-size: $footer-font-size;
   background: $footer-bg;
   @include lines(top);

@@ -4,7 +4,7 @@
 
       <!-- banner -->
       <div class="pv-card xbanner">
-        <img src="@images/banner1.png" />
+        <img @click="$router.push('/student')" src="@images/banner1.png" />
       </div>
        <!-- /banner -->
 

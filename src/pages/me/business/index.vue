@@ -100,7 +100,8 @@
 <script>
 
 export default {
-  name: 'pv-me-business'
+  name: 'pv-me-business',
+  title: '商务合作'
 }
 </script>
 

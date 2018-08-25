@@ -14,9 +14,9 @@
 
     <!-- footer button -->
     <div class="pv-btnfooter">
-      <router-link to="/" class="pv-btn xmain xfull">
-        <span>开始赚钱</span>
-      </router-link>
+        <router-link to="/" class="pv-btn xmain xfull">
+          <span>开始赚钱</span>
+        </router-link>
     </div>
     <!-- /footer button-->
   </div>
@@ -25,6 +25,7 @@
 <script>
 export default {
   name: 'pv-me-guide',
+  title: '新手指南',
 
   data () {
     return {

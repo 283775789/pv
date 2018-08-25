@@ -10,6 +10,7 @@ import marked from 'marked'
 
 export default {
   name: 'pv-me-guide-detail',
+  title: '指南详情',
 
   data () {
     return {

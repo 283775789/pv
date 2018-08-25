@@ -33,6 +33,7 @@
 <script>
 export default {
   name: 'me-service',
+  title: '客服',
 
   data () {
     return {

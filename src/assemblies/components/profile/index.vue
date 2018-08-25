@@ -5,8 +5,8 @@
       <img class="pv-user-avatar" :src="userData.headimg">
       <ul class="pv-user-body">
         <li>
-          <div class="pv-user-label">用户名</div>
-          <div class="pv-user-id">ID:88888888</div>
+          <div class="pv-user-label">{{userData.nickname}}</div>
+          <div class="pv-user-id">ID:{{userData.uid}}</div>
         </li>
         <li class="xlv2">
           <div class="pv-user-label">3507089</div>

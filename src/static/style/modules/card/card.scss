@@ -47,7 +47,7 @@ $card-spaceing: $spacing-tiny !default; // 卡片间距
 
 // 卡片: 做为banner容器
 .pv-card.xbanner {
-  padding: $card-padding;
+  padding: $spacing-tiny;
   text-align: center;
 }
 
